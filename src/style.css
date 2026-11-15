@@ -101,3 +101,8 @@ input:focus-visible,textarea:focus-visible,select:focus-visible,button:focus-vis
 .asbuilt-tools{max-width:100%;overflow-x:auto}
 .asbuilt-bar{flex-wrap:wrap;gap:8px}
 @media(max-width:720px){.photo-batch{align-items:stretch}.photo-batch button,.photo-batch select{flex:1 1 145px}.asbuilt-bar button{min-height:40px}.photo-editor-bar{flex-wrap:wrap}}
+/* 0.34: shared, accessible annotation toolbar */
+.editor-tools{display:inline-flex;align-items:center;gap:4px;flex-wrap:wrap;max-width:100%}
+.editor-tools button{display:inline-flex;align-items:center;gap:5px;min-height:36px;padding:6px 9px;border-radius:8px}
+.editor-tools button.selected,.editor-tools button[aria-pressed=true]{background:#2674c7!important;color:white!important;border-color:#2674c7!important}
+@media(max-width:700px){.editor-tools button{min-width:38px;justify-content:center;padding:7px}.editor-tools button span{display:none}}
