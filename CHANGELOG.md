@@ -1,3 +1,8 @@
+## 0.34.1 – TypeScript-Hotfix
+- Gemeinsame Editor-Icons als `Record<EditorTool, LucideIcon>` typisiert, um den JSX-Prop-Typkonflikt in `EditorTools.tsx` zu vermeiden.
+- `deploy.yml` unverändert.
+- Build noch nicht verifiziert: `npm install` hat in der Ausführungsumgebung das Zeitlimit überschritten.
+
 ## 0.33.3 – Build-Hotfix
 - Null-sichere Bauteildetailansicht: selectedPart statt nullable focused.
 - GitHub Actions: npm install beibehalten, da kein package-lock.json vorhanden ist.
