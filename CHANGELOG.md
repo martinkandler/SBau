@@ -1,6 +1,7 @@
-## 0.33.2 - Build-Fix
-- TypeScript-Null-Pruefung in Bauteildetails korrigiert (focused/selectedPart).
-- GitHub Pages Build-Konfiguration beibehalten.
+## 0.33.3 – Build-Hotfix
+- Null-sichere Bauteildetailansicht: selectedPart statt nullable focused.
+- GitHub Actions: npm install beibehalten, da kein package-lock.json vorhanden ist.
+- Keine Datenbankmigration und keine Funktionsänderungen.
 
 ## 0.27.0 – Kontrollierter Dokumentenimport
 - Vorschau vor dem Speichern mit Dateigröße und vorgeschlagener Dokumentart.
