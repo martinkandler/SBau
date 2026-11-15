@@ -115,3 +115,8 @@
 ### 0.33 – Konsolidierung
 - Versionierung vereinheitlicht, TypeScript-Transpilation aller Quelldateien ohne Syntaxfehler geprüft.
 - Einschränkungen: kein nativer Vektor-PDF-Export, kein automatischer Abgleich von Planrevisionen, keine automatische Bild-/PDF-Inhaltsanalyse. Vollständiger Vite-Produktions-Build mangels installierbarer npm-Abhängigkeiten nicht verifiziert.
+
+## 0.33.1 – GitHub Pages Hotfix
+- GitHub-Pages-Basispfad aus `GITHUB_REPOSITORY` statt festem Repositorynamen.
+- PWA-Service-Worker vorübergehend deaktiviert, um veraltete Cache-Bundles zu vermeiden.
+- Sichtbare Fehlermeldung bei JavaScript-Laufzeitfehlern statt leerer Seite.
