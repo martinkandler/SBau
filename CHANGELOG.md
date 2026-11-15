@@ -125,3 +125,10 @@
 - GitHub-Pages-Basispfad aus `GITHUB_REPOSITORY` statt festem Repositorynamen.
 - PWA-Service-Worker vorübergehend deaktiviert, um veraltete Cache-Bundles zu vermeiden.
 - Sichtbare Fehlermeldung bei JavaScript-Laufzeitfehlern statt leerer Seite.
+
+## 0.34.0 (Entwicklungsstand)
+- Navigation: Fotodokumentation, Qualitätsnachweise und Nachweisübersicht vereinheitlicht.
+- Gemeinsame Icon-Werkzeugleiste für beide Editoren.
+- PDF-Fotobericht direkt aus dem Browser (zwei Fotos je A4-Seite).
+- PDF-Export der aktuellen Bestandsplanseite mit sichtbaren Markierungen.
+- Technische Grenzen und offene Prüfungen in DEVELOPMENT.md dokumentiert.

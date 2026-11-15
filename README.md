@@ -1,3 +1,5 @@
+> Entwicklungsstand 0.34.0: Bitte Hinweise und offene Tests in [DEVELOPMENT.md](DEVELOPMENT.md) beachten.
+
 ### Version 0.27.0
 - Importvorschau mit überprüfbaren Dokumentarten und Bauteilvorschlägen.
 - Mehrfachzuordnung bereits vor dem Speichern, einzelne Dateien aus Import entfernen.
