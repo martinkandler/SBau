@@ -1,3 +1,7 @@
+## 0.33.2 - Build-Fix
+- TypeScript-Null-Pruefung in Bauteildetails korrigiert (focused/selectedPart).
+- GitHub Pages Build-Konfiguration beibehalten.
+
 ## 0.27.0 – Kontrollierter Dokumentenimport
 - Vorschau vor dem Speichern mit Dateigröße und vorgeschlagener Dokumentart.
 - Vorschläge zur Bauteilzuordnung anhand vollständiger Kennungen im Dateinamen; manuell korrigierbar.
