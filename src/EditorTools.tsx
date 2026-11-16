@@ -44,17 +44,17 @@ const icons: Record<EditorTool, LucideIcon> = {
   text: Type,
 };
 
-interface EditorToolsProps {
-  tools: readonly EditorTool[];
-  value: EditorTool;
-  onChange: (tool: EditorTool) => void;
+interface EditorToolsProps<T extends EditorTool> {
+  tools: readonly T[];
+  value: T;
+  onChange: (tool: T) => void;
 }
 
-export function EditorTools({
+export function EditorTools<T extends EditorTool>({
   tools,
   value,
   onChange,
-}: EditorToolsProps) {
+}: EditorToolsProps<T>) {
   return (
     <div
       className="editor-tools"
@@ -62,7 +62,7 @@ export function EditorTools({
       aria-label="Zeichenwerkzeuge"
     >
       {tools.map((tool) => {
-        const Icon = icons[tool];
+        const Icon: LucideIcon = icons[tool];
 
         return (
           <button
