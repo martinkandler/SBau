@@ -150,3 +150,9 @@
 - Bearbeitung der Stammdaten wirkt auf alle Gruppenelemente; Löschen entfernt die gesamte Gruppe.
 - CSV-Export und Seitenliste führen jede Änderung nur einmal auf.
 - Alte Datensätze bleiben ohne Datenbankmigration als Einzelgruppen nutzbar.
+
+## 0.35.0
+- Neuer Bereich Abrechnung & Aufmaß mit LV, Aufmaßen und kumulativen Abrechnungsständen.
+- CSV-/XLSX-LV-Import und PDF-/CSV-Abrechnungsübersicht.
+- Firmenlogo als SVG und Farbwahl für neue Bestandsplanmarkierungen.
+- Projektexport und -import um Abrechnungsdaten erweitert.
