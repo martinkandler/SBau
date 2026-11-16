@@ -8,6 +8,16 @@ const n=(v:string|number)=>Number(String(v).replace(',','.'));
 const money=(v:number)=>v.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2});
 const csvRows=(text:string)=>{const sep=(text.split(/\r?\n/)[0]||'').split(';').length>(text.split(/\r?\n/)[0]||'').split(',').length?';':',';const rows:string[][]=[];let row:string[]=[],field='',quoted=false;for(let i=0;i<text.length;i++){const c=text[i];if(c==='"'){if(quoted&&text[i+1]==='"'){field+='"';i++}else quoted=!quoted}else if(c===sep&&!quoted){row.push(field);field=''}else if((c==='\n'||c==='\r')&&!quoted){if(c==='\r'&&text[i+1]==='\n')i++;row.push(field);if(row.some(x=>x.trim()))rows.push(row);row=[];field=''}else field+=c}row.push(field);if(row.some(x=>x.trim()))rows.push(row);return rows};
 const safe=(v:string)=>v.replace(/^[=+@\-\t\r]/,'\'$&');
+const downloadBlob=(blob:Blob,filename:string):void=>{
+ const url=URL.createObjectURL(blob);
+ const link=document.createElement('a');
+ link.href=url;
+ link.download=filename;
+ document.body.appendChild(link);
+ link.click();
+ link.remove();
+ window.setTimeout(()=>URL.revokeObjectURL(url),1000);
+};
 const downloadCSV=(filename:string,rows:(string|number)[][])=>{const data='\uFEFF'+rows.map(r=>r.map(x=>'"'+safe(String(x)).replace(/"/g,'""')+'"').join(';')).join('\r\n');downloadBlob(new Blob([data],{type:'text/csv;charset=utf-8'}),filename)};
 const evalExpression=(s:string)=>{const clean=s.replace(/,/g,'.').replace(/\s/g,'');if(!clean||!/^[-+*/().\d]+$/.test(clean))throw Error('Nur Zahlen, Klammern und + - * / sind erlaubt');let i=0;const expr=():number=>{let v=term();while(clean[i]==='+'||clean[i]==='-'){const op=clean[i++];const b=term();v=op==='+'?v+b:v-b}return v};const term=():number=>{let v=factor();while(clean[i]==='*'||clean[i]==='/'){const op=clean[i++];const b=factor();if(op==='/'&&b===0)throw Error('Division durch null');v=op==='*'?v*b:v/b}return v};const factor=():number=>{if(clean[i]==='-'){i++;return -factor()}if(clean[i]==='+'){i++;return factor()}if(clean[i]==='('){i++;const v=expr();if(clean[i++]!==')')throw Error('Klammer fehlt');return v}const start=i;while(i<clean.length&&/[\d.]/.test(clean[i]))i++;if(start===i)throw Error('Ungültige Zahl');const v=Number(clean.slice(start,i));if(!Number.isFinite(v))throw Error('Ungültige Zahl');return v};const result=expr();if(i!==clean.length||!Number.isFinite(result))throw Error('Ungültiger Rechenansatz');return Math.round(result*1e6)/1e6};
 type Pt={x:number;y:number};const distance=(a:Pt,b:Pt)=>Math.hypot(a.x-b.x,a.y-b.y);const polygonArea=(p:Pt[])=>Math.abs(p.reduce((s,a,i)=>{const b=p[(i+1)%p.length];return s+a.x*b.y-b.x*a.y},0))/2;
