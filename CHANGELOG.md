@@ -1,3 +1,9 @@
+## 0.35.1 – Zeichenwerkzeuge und Programmübersicht
+- Strichstärke für Bestandsplan- und Fotoeditor (1–16 px); Bestandsplan-Markierungen speichern ihre Strichstärke.
+- Rückgängig/Wiederholen als Office-Icons in beiden Editoren; Fotoeditor mit Bildzustands-Historie.
+- Kompakte Funktionsübersicht unter Einstellungen einschließlich der Änderungen von 0.35.0 und 0.35.1.
+- Vite-ImportMeta-Typen durch `src/vite-env.d.ts` ergänzt.
+
 ## 0.34.2 - Fotoeditor-Laufzeitfix
 - Zeigerposition vor asynchroner React-State-Aktualisierung ermitteln, damit `currentTarget` nicht null ist.
 - Generische EditorTools-Typisierung und explizite LucideIcon-Zuordnung beibehalten.
