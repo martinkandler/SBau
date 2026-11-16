@@ -1,3 +1,14 @@
+## 0.35.3 – Einheitliche Firmenkopfzeilen
+- Alle aktiven PDF-Exporte (Fotodokumentation, Bestandsplanung, Abrechnung) verwenden das offizielle `public/sbau-logo.svg` statt `icon.svg`.
+- Das breite Logo wird proportional in die Kopfzeile eingepasst; Titel, Erstellungsdatum und „Seite X von Y“ erscheinen auf jeder PDF-Seite.
+- Die gemeinsame PDF-Vorlage wurde vereinheitlicht; `icon.svg` bleibt unverändert als Anwendungssymbol.
+
+## 0.35.2 – Einheitliches PDF-/Drucklayout
+- Einheitliche A4-Kopfzeile mit `public/icon.svg`, Dokumententitel, Datum und Seitenzahl auf allen generierten PDF-Seiten.
+- Fotodokumentation, Bestandsplan und Abrechnungsübersicht verwenden dieselbe Vorlage.
+- Abrechnungsübersicht auf mehrere A4-Seiten verteilt.
+- Bestandsplan-Druck über identisches Druck-PDF statt abweichender Popup-Druckansicht.
+
 ## 0.35.1 – Zeichenwerkzeuge und Programmübersicht
 - Strichstärke für Bestandsplan- und Fotoeditor (1–16 px); Bestandsplan-Markierungen speichern ihre Strichstärke.
 - Rückgängig/Wiederholen als Office-Icons in beiden Editoren; Fotoeditor mit Bildzustands-Historie.

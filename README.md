@@ -71,3 +71,6 @@ Dokumente können in der Dokumentenverwaltung über **Bearbeiten** mehreren Baut
 **Datenschutz und Datensicherung:** Fotos und Dokumente liegen lokal in IndexedDB. Browserdaten nicht ohne vorherigen Projektexport löschen. Vor jeder Aktualisierung ein Backup erstellen. Neue Funktionen zunächst mit einem Testprojekt ausprobieren.
 
 **Build-Status:** Die TypeScript-Syntax wurde geprüft, aber ein vollständiger `npm run build` konnte ohne verfügbare npm-Pakete nicht ausgeführt werden. GitHub Actions muss den Produktions-Build bestätigen.
+
+### PDF-Kopfzeilen (0.35.3)
+Die aktiven PDF-Exporte nutzen `public/sbau-logo.svg` als Firmenlogo. Jede A4-Seite zeigt Dokumententitel, Erstellungsdatum und Seitenzahl. `public/icon.svg` bleibt das Anwendungssymbol.
