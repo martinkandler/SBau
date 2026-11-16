@@ -142,3 +142,11 @@
 - PDF-Fotobericht direkt aus dem Browser (zwei Fotos je A4-Seite).
 - PDF-Export der aktuellen Bestandsplanseite mit sichtbaren Markierungen.
 - Technische Grenzen und offene Prüfungen in DEVELOPMENT.md dokumentiert.
+
+## 0.34.3 – Gruppierte Bestandsänderungen
+- Eine Bestandsänderung kann mehrere Zeichenelemente enthalten (groupId).
+- Neue Änderung anlegen, bestehende aktivieren und weitere Elemente zuordnen.
+- Vorhandene Einzeländerungen lassen sich mit der aktiven Änderung zusammenführen.
+- Bearbeitung der Stammdaten wirkt auf alle Gruppenelemente; Löschen entfernt die gesamte Gruppe.
+- CSV-Export und Seitenliste führen jede Änderung nur einmal auf.
+- Alte Datensätze bleiben ohne Datenbankmigration als Einzelgruppen nutzbar.

@@ -106,3 +106,8 @@ input:focus-visible,textarea:focus-visible,select:focus-visible,button:focus-vis
 .editor-tools button{display:inline-flex;align-items:center;gap:5px;min-height:36px;padding:6px 9px;border-radius:8px}
 .editor-tools button.selected,.editor-tools button[aria-pressed=true]{background:#2674c7!important;color:white!important;border-color:#2674c7!important}
 @media(max-width:700px){.editor-tools button{min-width:38px;justify-content:center;padding:7px}.editor-tools button span{display:none}}
+/* 0.34.3: grouped as-built change controls */
+.asbuilt-group-controls{display:flex;gap:8px;flex-wrap:wrap;margin:10px 0}
+.asbuilt-group-controls button{min-height:36px}
+.asbuilt-item{border-radius:8px;padding:8px;margin-bottom:8px}
+.asbuilt-item>div{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}

@@ -18,3 +18,6 @@ Einschränkungen / nächste Schritte:
 
 ## Nächster Schwerpunkt
 Abrechnung (LV, Aufmaß, Mengen, Nachträge) erst nach Stabilisierung und Abnahme von 0.34.
+
+### Version 0.34.3
+Gruppierte Bestandsänderungen mit mehreren Zeichenelementen. Vorhandene Datensätze bleiben erhalten. Vollständiger npm-Build war in dieser Umgebung wegen nicht verfügbarer Abhängigkeiten nicht verifizierbar.
