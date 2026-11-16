@@ -1,3 +1,8 @@
+## 0.34.2 - Fotoeditor-Laufzeitfix
+- Zeigerposition vor asynchroner React-State-Aktualisierung ermitteln, damit `currentTarget` nicht null ist.
+- Generische EditorTools-Typisierung und explizite LucideIcon-Zuordnung beibehalten.
+- GitHub Pages Workflow unveraendert.
+
 ## 0.34.1 – TypeScript-Hotfix
 - Gemeinsame Editor-Icons als `Record<EditorTool, LucideIcon>` typisiert, um den JSX-Prop-Typkonflikt in `EditorTools.tsx` zu vermeiden.
 - `deploy.yml` unverändert.
