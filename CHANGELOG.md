@@ -182,3 +182,10 @@
 - Polygonflächen, Pinformen, Transparenz, Pinverschiebung, Dokumentenarten und Gesamt-PDF-Export.
 - Datenbankschema 8 und erweitertes Projektsicherungsformat.
 - Noch keine vollständige Buildfreigabe.
+
+## 0.37.0 – Interaktive Einführung und fiktives Musterprojekt
+- Startseite: Einführungstour starten, Musterprojekt frei erkunden, Demo zurücksetzen.
+- Automatische lokale Bereitstellung eines fiktiven Ingenieurbauprojekts mit 4 Bauwerken, 18 Bauteilen, 12 schematischen SVG-Plänen, 24 synthetischen Baustellenillustrationen, 12 Beispielnachweisen, 30 LV-Positionen, 20 Musteraufmaßen und 2 Abschlagsständen.
+- Kontextbezogene, fortsetzbare Einführung mit 19 Schritten, Hervorhebung von UI-Bereichen und Zurück-/Weiter-Steuerung.
+- Demo-Datensätze eindeutig gekennzeichnet und von normalen Projekt-IDs getrennt.
+- Hinweis: Grafiken und Dokumente sind synthetische Muster und keine fachlich gültigen Planunterlagen oder echten Baustellenfotos.
