@@ -1,4 +1,5 @@
 import React,{useEffect,useState} from 'react';
+import {createPortal} from 'react-dom';
 import {ArrowLeft,ArrowRight,BookOpen,CheckCircle2,X} from 'lucide-react';
 export type TourStep={title:string;description:string;area:string;selector?:string;task?:string};
 export const TOUR_STEPS:TourStep[]=[
@@ -28,6 +29,26 @@ export default function GuidedTour({onArea,onExit}:{onArea:(area:string)=>void;o
  const [position,setPosition]=useState<React.CSSProperties>({top:'20%',left:'50%',transform:'translateX(-50%)'});
  const current=TOUR_STEPS[step];
  useEffect(()=>{onArea(current.area);localStorage.setItem(STORAGE,String(step))},[step,current.area,onArea]);
- useEffect(()=>{const update=()=>{const target=current.selector?document.querySelector(current.selector):null;document.querySelectorAll('[data-tour-focus]').forEach(el=>el.removeAttribute('data-tour-focus'));if(!target){setPosition({top:'18%',left:'50%',transform:'translateX(-50%)'});return}target.setAttribute('data-tour-focus','true');const r=target.getBoundingClientRect();const top=r.bottom+18+270<window.innerHeight?r.bottom+12:Math.max(16,r.top-310);setPosition({top:Math.max(12,top),left:Math.max(12,Math.min(window.innerWidth-390,r.left)),transform:'none'})};const id=window.setTimeout(update,120);window.addEventListener('resize',update);return()=>{window.clearTimeout(id);window.removeEventListener('resize',update);document.querySelectorAll('[data-tour-focus]').forEach(el=>el.removeAttribute('data-tour-focus'))}},[step,current.selector]);
- return <div className="tour-root" aria-live="polite"><div className="tour-shade"/><section className="tour-popover" role="dialog" aria-modal="false" aria-label="Interaktive Einführung" style={position}><div className="tour-top"><span><BookOpen size={17}/> Einführung · Schritt {step+1} von {TOUR_STEPS.length}</span><button title="Tour beenden" aria-label="Tour beenden" onClick={onExit}><X size={17}/></button></div><div className="tour-progress"><span style={{width:`${(step+1)/TOUR_STEPS.length*100}%`}}/></div><h3>{current.title}</h3><p>{current.description}</p>{current.task&&<p className="tour-task">{current.task}</p>}<div className="tour-controls"><button disabled={step===0} onClick={()=>setStep(i=>i-1)}><ArrowLeft size={16}/> Zurück</button>{step===TOUR_STEPS.length-1?<button className="primary" onClick={()=>{localStorage.removeItem(STORAGE);onExit()}}><CheckCircle2 size={16}/> Abschließen</button>:<button className="primary" onClick={()=>setStep(i=>i+1)}>Weiter <ArrowRight size={16}/></button>}</div><small>Du kannst jederzeit die Tour schließen und später fortsetzen.</small></section></div>
+ useEffect(()=>{
+  const update=()=>{
+   document.querySelectorAll('[data-tour-focus]').forEach(el=>el.removeAttribute('data-tour-focus'));
+   const target=current.selector?document.querySelector(current.selector):null;
+   const margin=16;
+   const width=Math.min(370,window.innerWidth-2*margin);
+   const height=Math.min(350,window.innerHeight-2*margin);
+   if(!target){setPosition({top:margin,left:Math.max(margin,window.innerWidth-width-margin),transform:'none'});return}
+   target.setAttribute('data-tour-focus','true');
+   const r=target.getBoundingClientRect();
+   // Large workspace panels must never be used as a popup's vertical anchor.
+   // In particular, the Planverwaltung step used to put the popup behind its panel.
+   const preferredTop=r.height>window.innerHeight*.45?margin:(r.bottom+height+margin<window.innerHeight?r.bottom+12:r.top-height-12);
+   const top=Math.max(margin,Math.min(window.innerHeight-height-margin,preferredTop));
+   const left=Math.max(margin,Math.min(window.innerWidth-width-margin,r.left));
+   setPosition({top,left,transform:'none'});
+  };
+  const id=window.setTimeout(update,180);
+  window.addEventListener('resize',update);
+  return()=>{window.clearTimeout(id);window.removeEventListener('resize',update);document.querySelectorAll('[data-tour-focus]').forEach(el=>el.removeAttribute('data-tour-focus'))};
+ },[step,current.selector,current.area]);
+ return createPortal(<div className="tour-root" aria-live="polite"><div className="tour-shade"/><section className="tour-popover" role="dialog" aria-modal="false" aria-label="Interaktive Einführung" style={position}><div className="tour-top"><span><BookOpen size={17}/> Einführung · Schritt {step+1} von {TOUR_STEPS.length}</span><button title="Tour beenden" aria-label="Tour beenden" onClick={onExit}><X size={17}/></button></div><div className="tour-progress"><span style={{width:`${(step+1)/TOUR_STEPS.length*100}%`}}/></div><h3>{current.title}</h3><p>{current.description}</p>{current.task&&<p className="tour-task">{current.task}</p>}<div className="tour-controls"><button disabled={step===0} onClick={()=>setStep(i=>i-1)}><ArrowLeft size={16}/> Zurück</button>{step===TOUR_STEPS.length-1?<button className="primary" onClick={()=>{localStorage.removeItem(STORAGE);onExit()}}><CheckCircle2 size={16}/> Abschließen</button>:<button className="primary" onClick={()=>setStep(i=>i+1)}>Weiter <ArrowRight size={16}/></button>}</div><small>Du kannst jederzeit die Tour schließen und später fortsetzen.</small></section></div>,document.body);
 }
