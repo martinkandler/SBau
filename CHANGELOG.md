@@ -1,3 +1,6 @@
+## 0.36.2
+- Zentraler Markierungsdialog, Pin-/Flächenbearbeitung und neue Startseite. Siehe RELEASE_0.36.2.md.
+
 ## 0.35.3 – Einheitliche Firmenkopfzeilen
 - Alle aktiven PDF-Exporte (Fotodokumentation, Bestandsplanung, Abrechnung) verwenden das offizielle `public/sbau-logo.svg` statt `icon.svg`.
 - Das breite Logo wird proportional in die Kopfzeile eingepasst; Titel, Erstellungsdatum und „Seite X von Y“ erscheinen auf jeder PDF-Seite.
