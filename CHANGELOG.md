@@ -173,3 +173,9 @@
 - CSV-/XLSX-LV-Import und PDF-/CSV-Abrechnungsübersicht.
 - Firmenlogo als SVG und Farbwahl für neue Bestandsplanmarkierungen.
 - Projektexport und -import um Abrechnungsdaten erweitert.
+
+## 0.36.0 (Entwicklungsstand)
+- Bauwerke und Bauteile als eigenständige Projektstruktur; Planhierarchie und Revisionsverwaltung.
+- Polygonflächen, Pinformen, Transparenz, Pinverschiebung, Dokumentenarten und Gesamt-PDF-Export.
+- Datenbankschema 8 und erweitertes Projektsicherungsformat.
+- Noch keine vollständige Buildfreigabe.

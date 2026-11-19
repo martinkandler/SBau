@@ -1,15 +1,16 @@
+import {loadDocumentKinds,defaultKinds} from './DocumentKindSettings';
 import {suggestParts} from './importSuggestions';
 import {documentMatchesPart,documentPartIds,assignDocumentParts} from './documentLinks';
 import {useEffect,useMemo,useState} from 'react';
 import {FileText,Upload,Trash2,Download,Search,X,ExternalLink,CheckSquare} from 'lucide-react';
 import {db,uid,type Part,type Category,type ConstructionDocument} from './db';
-const kinds=['Bewehrungsplan','Schalplan','Detailplan','Lieferschein','Betonlieferschein','Prüfprotokoll','Materialnachweis','Leistungserklärung','CE-Dokument','Abnahmeprotokoll','Sonstiges'];
+
 export default function DocumentWorkspace({projectId,parts,categories,initialPartId='',onCountChange}:{projectId:string;parts:Part[];categories:Category[];initialPartId?:string;onCountChange?:()=>void}){
- const [pending,setPending]=useState<{file:File;kind:string;partIds:string[]}[]>([]),[importing,setImporting]=useState(false),[importSearch,setImportSearch]=useState('');
+ const [kinds,setKinds]=useState<string[]>(defaultKinds);const [pending,setPending]=useState<{file:File;kind:string;partIds:string[]}[]>([]),[importing,setImporting]=useState(false),[importSearch,setImportSearch]=useState('');
  const [marked,setMarked]=useState<string[]>([]),[bulkKind,setBulkKind]=useState(''),[bulkPart,setBulkPart]=useState(''),[bulkAction,setBulkAction]=useState<'add'|'remove'|'replace'>('add'),[onlyUnassigned,setOnlyUnassigned]=useState(false),[sort,setSort]=useState<'newest'|'oldest'|'name'|'kind'>('newest'),[busy,setBusy]=useState(false);
  const [items,setItems]=useState<ConstructionDocument[]>([]),[search,setSearch]=useState(''),[partFilter,setPartFilter]=useState(''),[kindFilter,setKindFilter]=useState(''),[selected,setSelected]=useState<ConstructionDocument|null>(null),[edit,setEdit]=useState<ConstructionDocument|null>(null),[url,setUrl]=useState(''),[error,setError]=useState('');
  const reload=async()=>{setItems(await db.documents.where('projectId').equals(projectId).toArray())};
- useEffect(()=>{reload();setSelected(null);setPartFilter(initialPartId);setMarked([])},[projectId]);
+ useEffect(()=>{void loadDocumentKinds(projectId).then(list=>setKinds(list.filter(k=>!k.archived).map(k=>k.name)));reload();setSelected(null);setPartFilter(initialPartId);setMarked([])},[projectId]);
  useEffect(()=>{if(!selected){setUrl('');return}const u=URL.createObjectURL(selected.original);setUrl(u);return()=>URL.revokeObjectURL(u)},[selected]);
  const filtered=useMemo(()=>items.filter(d=>(!partFilter||documentMatchesPart(d,partFilter))&&(!kindFilter||d.kind===kindFilter)&&(!onlyUnassigned||documentPartIds(d).length===0)&&(d.name+' '+d.description+' '+d.kind).toLowerCase().includes(search.toLowerCase())).sort((a,b)=>sort==='name'?a.name.localeCompare(b.name,'de'):sort==='kind'?a.kind.localeCompare(b.kind,'de')||a.name.localeCompare(b.name,'de'):sort==='oldest'?a.created-b.created:b.created-a.created),[items,partFilter,kindFilter,search,onlyUnassigned,sort]);
  function suggestKind(name:string){const n=name.toLocaleLowerCase('de');if(/beton.*liefer|liefer.*beton/.test(n))return 'Betonlieferschein';if(/lieferschein|delivery/.test(n))return 'Lieferschein';if(/prüf|pruef|protokoll|labor|zeugnis/.test(n))return 'Prüfprotokoll';if(/leistungserkl|dop/.test(n))return 'Leistungserklärung';if(/(^|[^a-z])ce([^a-z]|$)/.test(n))return 'CE-Dokument';if(/abnahme|freigabe/.test(n))return 'Abnahmeprotokoll';if(/bewehrung|stahlplan/.test(n))return 'Bewehrungsplan';if(/schalplan|schalung/.test(n))return 'Schalplan';if(/detail/.test(n))return 'Detailplan';if(/material|datenblatt/.test(n))return 'Materialnachweis';return 'Sonstiges'}
