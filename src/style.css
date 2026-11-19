@@ -165,3 +165,12 @@ input:focus-visible,textarea:focus-visible,select:focus-visible,button:focus-vis
 .viewer-tip-right{left:auto;right:12px;bottom:12px;transform:none;max-width:260px}
 
 .area-pin{border-radius:50%;min-width:29px;height:29px}
+
+/* 0.36.3: readable native dropdowns in both themes */
+:root {color-scheme:light;}
+[data-theme=dark] select,[data-theme=dark] select option,[data-theme=dark] select optgroup {background-color:#182330!important;color:#e9eef5!important;}
+[data-theme=light] select,[data-theme=light] select option,[data-theme=light] select optgroup {background-color:#fff!important;color:#172c40!important;}
+@media (prefers-color-scheme:dark){[data-theme=auto] select,[data-theme=auto] select option,[data-theme=auto] select optgroup{background-color:#182330!important;color:#e9eef5!important;}}
+@media (prefers-color-scheme:light){[data-theme=auto] select,[data-theme=auto] select option,[data-theme=auto] select optgroup{background-color:#fff!important;color:#172c40!important;}}
+.area-color-control{display:inline-flex;align-items:center;gap:6px;font-size:12px;padding:4px 8px;border:1px solid var(--border,#64748b);border-radius:7px;background:var(--surface,#fff);color:inherit}
+.area-color-control input{width:30px;height:28px;cursor:pointer;border:0;background:transparent}
