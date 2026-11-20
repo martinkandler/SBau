@@ -184,24 +184,8 @@ input:focus-visible,textarea:focus-visible,select:focus-visible,button:focus-vis
 .tour-shade{z-index:0!important}
 [data-tour-focus=true]{z-index:auto!important;outline:3px solid #5aaaf5!important;outline-offset:3px}
 @media(max-width:600px){.tour-popover{max-height:calc(100dvh - 24px)!important}}
-
-/* 0.37.2: Branding and reliable two-row navigation on narrow screens */
-.home-header .brand-logo{display:none!important}
-.home-app-title{letter-spacing:-.055em;white-space:nowrap}
-.home-app-title span{color:#2387c9}
-@media(max-width:750px){
-  .app-header.project-header{height:auto;min-height:96px;display:grid;grid-template-columns:auto auto minmax(0,1fr);grid-template-rows:44px 44px;column-gap:8px;row-gap:0;padding:3px 10px 5px;align-items:center}
-  .project-header .brand{grid-column:1;grid-row:1;min-width:0}
-  .project-header .brand-logo{display:none!important}
-  .project-header .brand strong{font-size:16px;letter-spacing:-.025em}
-  .project-header .compact{grid-column:2;grid-row:1;white-space:nowrap}
-  .project-header .project-title{grid-column:3;grid-row:1;max-width:none;display:block;min-width:0;font-size:12px;text-align:right}
-  .project-header .menus{grid-column:1/-1;grid-row:2;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));width:100%;margin:0;gap:7px;min-width:0}
-  .project-header .menus button{min-width:0;min-height:39px;justify-content:center!important;text-align:center;white-space:nowrap;font-size:13px;padding:7px 6px}
-  .project-header .dropdown{top:calc(100% - 2px);right:10px;left:auto;width:min(280px,calc(100vw - 20px))}
-  .project-header~.workspace{height:calc(100dvh - 96px)}
-  .project-header~.workspace .planstage.max{inset:96px 0 0}
-  .home-header{height:54px}
-  .home-header .brand strong{font-size:16px}
-}
-@media(max-width:360px){.project-header .project-title{font-size:11px}.project-header .menus button{font-size:12px;padding:6px 4px}}
+/* 0.37.2 – LV import and title hierarchy */
+.lv-preview{border:1px solid var(--border,#68738155);border-radius:12px;padding:14px;margin:12px 0;background:var(--surface,#ffffff08)}
+.lv-preview-scroll{max-height:340px;overflow:auto}.lv-preview details{margin:12px 0}.lv-preview li{margin:4px 0}
+.billing-list button.lv-heading{font-weight:700;background:var(--surface,#ffffff10);border:1px solid var(--border,#68738155)}
+.billing-list button.lv-heading.active{background:#2674c7}

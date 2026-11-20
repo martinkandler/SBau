@@ -1,12 +1,20 @@
-# sbau.akte 0.37.2 – Branding und mobile Navigation
+# SBauAkte 0.37.2 – LV-Import-Hotfix
 
-- Produktname und Schriftzug auf der Startseite in `sbau.akte` geändert.
-- Firmenlogo in der Kopfzeile ausschließlich auf der Startseite entfernt; großes Firmenlogo im Startseiten-Hero bleibt.
-- Auf Mobilgeräten Firmenlogo in der Kopfzeile ausgeblendet.
-- Die drei Projekt-Dropdowns Projekte, Pläne und Bereiche erhalten eine eigene zweite Zeile und bleiben vollständig erreichbar.
-- Projektüberschrift auf schmalen Displays mit Ellipse; Dropdowns werden innerhalb des Viewports geöffnet.
-- Höhenberechnung des Projektarbeitsbereichs an die zweizeilige mobile Kopfzeile angepasst.
-- Bestehende Datenbank, Musterprojekt und Tour bleiben unverändert.
+## Importformat
+Excel `.xlsx` (erstes Tabellenblatt), CSV mit Semikolon, Komma oder Tab und GAEB DA XML `.x83` / `.x84` / `.xml` (Basisunterstützung).
 
-## Prüfen
-Auf iPhone/Android bei 320, 375 und 430 px Breite alle drei Dropdowns öffnen; Startseite und Projektansicht prüfen. GitHub Actions Build und Browser-Test erforderlich.
+Empfohlene Kopfzeile: `OZ;Typ;Kurztext;Einheit;Menge;Einheitspreis;Langtext;Vertragsart`.
+Typ: `Titel`, `Untertitel`, `Position`; Vertragsart: `Vertrag` oder `Nachtrag`.
+Bei fehlender Typ-Spalte erkennt die Anwendung Titel an leeren Mengen-/Preis- und Einheitsfeldern; dies ist eine Heuristik, die in der Vorschau zu prüfen ist.
+
+## Funktionen
+- Vorschau der ersten 100 Importzeilen, Anzahl Positionen/Titel, Warnungen und Bestätigung.
+- Doppelte Ordnungszahlen werden nicht übernommen.
+- Aufklappbare Titel und Untertitel, Titelsummen und Anzeige von Langtexten.
+- Kumulative Abrechnung und Vertragssumme ohne Titelzeilen.
+- Manuelles Hinzufügen von Titel-/Untertitelzeilen möglich.
+
+## Grenzen
+- GAEB DA XML ist ein best-effort Parser und keine vollständige GAEB-Zertifizierung. Unterschiedliche GAEB-Strukturen, insbesondere komplexe Text- und OZ-Kodierungen, können eine externe Konvertierung erfordern.
+- Titelhierarchie setzt durch Punkte gegliederte OZ voraus (z. B. `01`, `01.02`, `01.02.0010`).
+- Der vollständige Vite-/TypeScript-Build konnte hier mangels npm-Registry-Verbindung nicht durchgeführt werden. Syntaxprüfung der geänderten TS/TSX-Dateien wurde durchgeführt.

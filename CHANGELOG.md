@@ -189,3 +189,11 @@
 - Kontextbezogene, fortsetzbare Einführung mit 19 Schritten, Hervorhebung von UI-Bereichen und Zurück-/Weiter-Steuerung.
 - Demo-Datensätze eindeutig gekennzeichnet und von normalen Projekt-IDs getrennt.
 - Hinweis: Grafiken und Dokumente sind synthetische Muster und keine fachlich gültigen Planunterlagen oder echten Baustellenfotos.
+
+## 0.37.2 – LV-Import und Titelhierarchie
+- Importvorschau mit Warnungen und Bestätigung für Excel (.xlsx), CSV sowie grundlegende GAEB-DA-XML-Dateien (.x83/.x84/.xml).
+- Spalten Typ, Langtext und Vertragsart; automatische Titelerkennung bei leeren Mengen-/Preisfeldern.
+- Titel und Untertitel als aufklappbare Gliederung, inklusive Titelsummen.
+- Titel werden nicht als abrechenbare LV-Positionen in Vertrags- und Abschlagssummen gerechnet.
+- Nachtragspositionen werden als solche gekennzeichnet; bestehende Daten bleiben erhalten.
+- Einschränkung: GAEB DA XML ist nur für unterstützte Strukturvarianten umgesetzt, keine vollständige GAEB-Konformität; Importvorschau sorgfältig prüfen.
