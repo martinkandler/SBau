@@ -200,3 +200,9 @@
 
 ## 0.37.3 – sbau.akte und mobile Navigation
 - Umbenennung der sichtbaren Wortmarke, Systemthema und zweizeilige Mobilnavigation.
+
+## 0.38.0 – LV und Abrechnungsvorbereitung
+- LV-Hauptvertrag und Nachträge getrennt, schreibgeschützt, direkt aus RIBX81 importierbar.
+- Fortlaufende, frei datierbare Abrechnungszettel als Zuarbeit des Bauleiters für iTWO.
+- Positionsbezogene Einträge mit mehreren Bauteilen, Mengenhinweisen und verknüpften Nachweisen.
+- PDF-/JSON-Übergabe, Status und kontrollierter LV-Ersatzimport.
