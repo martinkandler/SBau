@@ -189,3 +189,37 @@ input:focus-visible,textarea:focus-visible,select:focus-visible,button:focus-vis
 .lv-preview-scroll{max-height:340px;overflow:auto}.lv-preview details{margin:12px 0}.lv-preview li{margin:4px 0}
 .billing-list button.lv-heading{font-weight:700;background:var(--surface,#ffffff10);border:1px solid var(--border,#68738155)}
 .billing-list button.lv-heading.active{background:#2674c7}
+
+/* sbau.akte 0.37.3: branding, reliable system theme and responsive navigation */
+:root,[data-theme=light]{color-scheme:light}
+[data-theme=dark]{color-scheme:dark}
+@media(prefers-color-scheme:dark){[data-theme=auto]{color-scheme:dark}}
+@media(prefers-color-scheme:light){[data-theme=auto]{color-scheme:light}}
+[data-theme=light] .home-app-title,[data-theme=auto] .home-app-title{color:#153b63}
+[data-theme=dark] .home-app-title{color:#e9f4ff}
+@media(prefers-color-scheme:dark){[data-theme=auto] .home-app-title{color:#e9f4ff}}
+.home-app-title{font-weight:850;letter-spacing:-.065em;overflow-wrap:anywhere}
+.home-app-title span{color:#2387c9}
+.app-header{min-width:0}
+.app-header .brand{flex-shrink:0}
+.app-header .menus{min-width:0}
+.app-header .menus button{white-space:nowrap;flex-shrink:0}
+.app-header .dropdown{max-height:min(75dvh,620px);overflow-y:auto}
+.home-header .brand{gap:8px}
+@media(max-width:760px){
+ .app-header.has-project{height:auto;min-height:54px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;grid-template-rows:54px 44px;column-gap:8px;row-gap:0;padding:0 10px;align-items:center}
+ .app-header.has-project .brand{grid-column:1;grid-row:1;min-width:0}
+ .app-header.has-project .brand-logo{max-width:88px!important;height:32px!important}
+ .app-header.has-project .brand strong{font-size:13px}
+ .app-header.has-project .brand small{display:none}
+ .app-header.has-project .compact{grid-column:3;grid-row:1;justify-self:end;white-space:nowrap}
+ .app-header.has-project .project-title{grid-column:2;grid-row:1;display:block!important;max-width:100%;font-size:12px;min-width:0}
+ .app-header.has-project .menus{grid-column:1/-1;grid-row:2;margin:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;width:100%;align-self:stretch;padding-bottom:6px}
+ .app-header.has-project .menus button{justify-content:center;width:100%;min-width:0;border:1px solid var(--line,#dce2ea);background:var(--surface,#fff);padding:7px 5px;font-size:13px;border-radius:8px}
+ .app-header.has-project .menus button:hover{background:var(--hover,#e9eef5)}
+ .app-header.has-project .dropdown{top:calc(100% - 2px);right:10px;left:auto;width:min(320px,calc(100vw - 20px));max-height:calc(100dvh - 120px);overflow:auto}
+ .app-header.has-project + .workspace{height:calc(100dvh - 98px)}
+ .app-header.has-project ~ .workspace{height:calc(100dvh - 98px)}
+ .app-header.has-project ~ .workspace .planstage.max{inset:98px 0 0}
+}
+@media(max-width:400px){.app-header.has-project .brand-logo{max-width:64px!important}.app-header.has-project .brand{gap:4px}.app-header.has-project .brand strong{font-size:12px}.app-header.has-project .project-title{font-size:11px}}

@@ -197,3 +197,6 @@
 - Titel werden nicht als abrechenbare LV-Positionen in Vertrags- und Abschlagssummen gerechnet.
 - Nachtragspositionen werden als solche gekennzeichnet; bestehende Daten bleiben erhalten.
 - Einschränkung: GAEB DA XML ist nur für unterstützte Strukturvarianten umgesetzt, keine vollständige GAEB-Konformität; Importvorschau sorgfältig prüfen.
+
+## 0.37.3 – sbau.akte und mobile Navigation
+- Umbenennung der sichtbaren Wortmarke, Systemthema und zweizeilige Mobilnavigation.
