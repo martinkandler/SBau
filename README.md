@@ -1,6 +1,6 @@
 # sbau.akte – Digitale Baustellendokumentation
 
-**Aktuelle Version: 0.39.3 (Entwicklungsstand)** · React, TypeScript, Vite, Dexie/IndexedDB · offlinefähige PWA
+**Aktuelle Version: 0.39.4 (Entwicklungsstand)** · React, TypeScript, Vite, Dexie/IndexedDB · offlinefähige PWA
 
 ## Funktionsumfang
 - Projekt-Dashboard, Projektverwaltung und JSON-Sicherung
@@ -9,7 +9,7 @@
 - Bauteilakten, Fotodokumentation, Bestandsplanung und Qualitätsnachweise
 - LV-Import (Excel, CSV und GAEB), Aufmaß und Abrechnung
 
-## Neuerungen in 0.39.3
+## Neuerungen in 0.39.4
 - Flächenlinien und Bearbeitungsgriffe beim Zoom besser lesbar; unabhängige Schalter für Transparenz und Sichtbarkeit von Pins/Flächen
 - Ausgewählten Plan direkt aus der Planverwaltung öffnen
 - Versionsanzeige und Funktionsübersicht aktualisiert, UI-Branding vereinheitlicht

@@ -1,3 +1,8 @@
+## 0.39.4 – Kategorienverwaltung
+- Doppelte alte Kategorienmaske entfernt.
+- Hierarchische Qualitätskategorien und editierbare Standards.
+- Bauteilkategorien aus dem neuen Katalog geladen.
+
 ## 0.39.3 – GAEB-Import-Hotfix
 - Dezimalpunkt in GAEB-Einheitspreisen korrekt verarbeitet; Referenz-LV geprüft.
 
