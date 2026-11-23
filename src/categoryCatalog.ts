@@ -48,7 +48,7 @@ export const STANDARD_CATEGORIES:AppCategory[] = [
   {
     "id": "component:5",
     "system": "component",
-    "name": "Straßenbau",
+    "name": "Hochbau",
     "color": "#b18b51",
     "scope": "global",
     "sortOrder": 5,

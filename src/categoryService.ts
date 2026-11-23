@@ -3,6 +3,16 @@ import {STANDARD_CATEGORIES} from './categoryCatalog';
 export async function ensureCategoryCatalog(){
  const existing=await db.appCategories.where('scope').equals('global').count();
  if(!existing)await db.appCategories.bulkPut(STANDARD_CATEGORIES);
+ // Reconcile previously persisted global defaults without touching project-specific additions.
+ const erdbau=await db.appCategories.get('component:2');
+ if(erdbau?.scope==='global'&&erdbau.name==='Tiefbau')await db.appCategories.update(erdbau.id,{name:'Erdbau'});
+ const hochbau=await db.appCategories.get('component:5');
+ if(hochbau?.scope==='global'&&hochbau.name==='Straßenbau')await db.appCategories.update(hochbau.id,{name:'Hochbau'});
+ // Legacy category records may still exist in older projects.
+ await db.categories.toCollection().modify(c=>{
+   if(c.name==='Tiefbau')c.name='Erdbau';
+   if(c.name==='Straßenbau')c.name='Hochbau';
+ });
 }
 export async function effectiveCategories(system:CategorySystem,projectId:string){
  await ensureCategoryCatalog();

@@ -1,3 +1,9 @@
+## 0.39.7 – Bauteil-Kategorien korrigiert
+
+- Tiefbau → Erdbau und Straßenbau → Hochbau ausschließlich im Bauteil-Kategoriensystem.
+- Bestehende lokale Standardkategorien werden beim Laden abgeglichen.
+- Plan- und QS-Ablagekategorien bleiben unverändert.
+
 ## 0.39.6 – 23.11.2026
 - Abrechnungszettel bearbeiten und löschen; Abrechnungsvorbereitung neu gegliedert.
 - Rotes X und Escape in Abrechnungsdialogen.
