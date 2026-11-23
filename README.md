@@ -1,3 +1,7 @@
+# sbau.akte 0.39.5
+
+Offlinefähige digitale Baustellenakte. Dokumentenimport mit Bauteilzuordnung, QS-Ablagekategorie und unabhängiger Dokumentenart.
+
 # sbau.akte – Digitale Baustellendokumentation
 
 **Aktuelle Version: 0.39.4 (Entwicklungsstand)** · React, TypeScript, Vite, Dexie/IndexedDB · offlinefähige PWA

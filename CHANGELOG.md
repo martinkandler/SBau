@@ -1,3 +1,10 @@
+## 0.39.5 – Dokumentenimport und Dokumentenarten
+
+- 22 alphabetisch sortierte Standard-Dokumentenarten ohne Plan-Typen.
+- QS-Ablagekategorie, Dokumentenart und Bauteilzuordnung im Importdialog.
+- Dokumentenart unabhängig von QS-Ablagekategorie; hierarchische QS-Auswahl.
+- Vorhandene benutzte Dokumentenarten bleiben archiviert erhalten; eigene Ergänzungen bleiben bestehen.
+
 ## 0.39.4 – Kategorienverwaltung
 - Doppelte alte Kategorienmaske entfernt.
 - Hierarchische Qualitätskategorien und editierbare Standards.
