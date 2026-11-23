@@ -21,7 +21,7 @@ export const STANDARD_CATEGORIES:AppCategory[] = [
   {
     "id": "component:2",
     "system": "component",
-    "name": "Tiefbau",
+    "name": "Erdbau",
     "color": "#91643f",
     "scope": "global",
     "sortOrder": 2,

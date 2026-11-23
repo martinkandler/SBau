@@ -1,3 +1,9 @@
+## 0.39.6 – 23.11.2026
+- Abrechnungszettel bearbeiten und löschen; Abrechnungsvorbereitung neu gegliedert.
+- Rotes X und Escape in Abrechnungsdialogen.
+- Gelbe UI-Akzente; Bauteilkategorie Erdbau statt Tiefbau.
+- Siehe RELEASE_0.39.6.md für Prüfstatus.
+
 ## 0.39.5 – Dokumentenimport und Dokumentenarten
 
 - 22 alphabetisch sortierte Standard-Dokumentenarten ohne Plan-Typen.

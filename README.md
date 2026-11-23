@@ -1,4 +1,4 @@
-# sbau.akte 0.39.5
+# sbau.akte 0.39.6
 
 Offlinefähige digitale Baustellenakte. Dokumentenimport mit Bauteilzuordnung, QS-Ablagekategorie und unabhängiger Dokumentenart.
 
