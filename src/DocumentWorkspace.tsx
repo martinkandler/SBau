@@ -1,3 +1,4 @@
+import {confirmDialog} from './dialogs';
 import {loadDocumentKinds,defaultKinds} from './DocumentKindSettings';
 import {suggestParts} from './importSuggestions';
 import {documentMatchesPart,documentPartIds,assignDocumentParts} from './documentLinks';
@@ -19,9 +20,9 @@ export default function DocumentWorkspace({projectId,parts,categories,initialPar
  function changePending(index:number,patch:Partial<{kind:string;partIds:string[]}>){setPending(v=>v.map((item,i)=>i===index?{...item,...patch}:item))}
  const visibleIds=filtered.map(d=>d.id);const selectedIds=marked.filter(id=>items.some(d=>d.id===id));
  async function applyBulk(){if(!selectedIds.length||busy)return;setBusy(true);setError('');try{const docs=items.filter(d=>selectedIds.includes(d.id));await db.transaction('rw',db.documents,async()=>{for(const d of docs){let next={...d};if(bulkKind)next.kind=bulkKind;if(bulkPart){const ids=documentPartIds(next);next=assignDocumentParts(next,bulkAction==='replace'?[bulkPart]:bulkAction==='remove'?ids.filter(id=>id!==bulkPart):[...ids,bulkPart])}await db.documents.put(next)}});setMarked([]);await reload();onCountChange?.()}catch(e){setError('Stapelbearbeitung fehlgeschlagen: '+String(e))}finally{setBusy(false)}}
- async function removeBulk(){if(!selectedIds.length||busy||!confirm(`${selectedIds.length} Dokumente endgültig löschen?`))return;setBusy(true);try{await db.documents.bulkDelete(selectedIds);setMarked([]);setSelected(null);await reload();onCountChange?.()}catch(e){setError('Löschen fehlgeschlagen: '+String(e))}finally{setBusy(false)}}
+ async function removeBulk(){if(!selectedIds.length||busy||!(await confirmDialog(`${selectedIds.length} Dokumente endgültig löschen?`)))return;setBusy(true);try{await db.documents.bulkDelete(selectedIds);setMarked([]);setSelected(null);await reload();onCountChange?.()}catch(e){setError('Löschen fehlgeschlagen: '+String(e))}finally{setBusy(false)}}
  async function save(){if(!edit)return;await db.documents.put(assignDocumentParts(edit,documentPartIds(edit)));setSelected(assignDocumentParts(edit,documentPartIds(edit)));setEdit(null);await reload()}
- async function remove(d:ConstructionDocument){if(!confirm(`Dokument „${d.name}“ endgültig löschen?`))return;await db.documents.delete(d.id);setSelected(null);await reload();onCountChange?.()}
+ async function remove(d:ConstructionDocument){if(!(await confirmDialog(`Dokument „${d.name}“ endgültig löschen?`)))return;await db.documents.delete(d.id);setSelected(null);await reload();onCountChange?.()}
  function download(d:ConstructionDocument){const u=URL.createObjectURL(d.original),a=document.createElement('a');a.href=u;a.download=d.name;a.click();setTimeout(()=>URL.revokeObjectURL(u),10000)}
  return <section className="section doc-workspace"><div className="parts-heading"><div><h2>Dokumente und Unterpläne</h2><p>Originaldateien lokal speichern und Bauteilen zuordnen.</p></div><label className="primary doc-upload"><Upload size={17}/> Dokumente hinzufügen<input hidden multiple type="file" accept="application/pdf,image/*" onChange={e=>{queueFiles(e.target.files);e.target.value=''}}/></label></div>
  {error&&<p role="alert" className="doc-error">{error}</p>}

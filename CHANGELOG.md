@@ -1,3 +1,39 @@
+## 0.38.4 – Planviewer
+- Die Werkzeugleiste des Planviewers ist keine schwebende Overlay-Leiste mehr, sondern eine eigene Zeile über der Plan-Fläche. Sie verdeckt den oberen Planrand nicht mehr (vorher 87 px und mehr bei 1000 px Breite, jetzt einzeilig mit 51 px); der Plan wird in die verbleibende Fläche eingepasst.
+- Die Leiste ist in drei Gruppen gegliedert: Markieren, Ansicht (Pins verschieben, Transparenz, Pins an/aus, Kategorie), Zoom (−, %, +, Einpassen, Vollbild). Bei schmaler Plan-Fläche zeigt sie nur Icons mit Tooltip und `aria-label` (Container-Query), bei breiter Fläche Icons mit Beschriftung. Auf dem Handy: zwei Zeilen.
+- Entfernt: die Zoom-Knöpfe in der oberen Leiste. Sie veränderten nur ihren eigenen Prozentwert, nicht den Plan.
+- Behoben: Im Vollbild lag der Plan über der oberen Leiste und damit über dem einzigen Knopf zum Beenden. Der Vollbild-Knopf sitzt jetzt in der Plan-Werkzeugleiste, Escape beendet das Vollbild ebenfalls.
+- Behoben: Mausrad- und Trackpad-Zoom nutzen jetzt einen nicht-passiven Listener (Konsolenfehler „Unable to preventDefault inside passive event listener“); Trackpad-Pinch zoomt fein statt in festen Schritten und lässt nicht mehr die ganze Seite zoomen.
+- Zustandsknöpfe (Pins verschieben, Transparenz, Pins an/aus, Vollbild) melden `aria-pressed`; die Leiste hat `role="toolbar"`.
+- Touch: Auswahlfelder und Knöpfe in der Plan-Leiste sind auf Tablet/Handy mindestens 44 px hoch.
+
+## 0.38.3 – Projekt-Dashboard, Startseite, Bauteil-Details
+- Neu: **Projekt-Dashboard** (`src/Dashboard.tsx`). Beim Öffnen eines Projekts landet man jetzt dort statt im Planviewer. Es zeigt Projektkopf mit Bauzeit-Balken, Kennzahl-Kacheln (Bauwerke, Bauteile, Pläne, Fotos, Dokumente) als Sprungziele, den Dokumentationsstand je Nachweisart, „Braucht Aufmerksamkeit“ (fehlende Bauwerke/Pläne, größte Nachweislücken, nicht zugeordnete Fotos/Dokumente, Abrechnungszettel im Entwurf), Abrechnung (Vertragssumme, letzte Abschlagsrechnung, abgerechneter Anteil) und die zuletzt hinzugefügten Fotos und Dokumente.
+- Dashboard ist der erste Eintrag im Menü „Bereiche“; Zurück vom Dashboard führt zur Projektliste.
+- Startseite: Der Demo-Block klappt zu einer schmalen Zeile ein, sobald echte Projekte existieren („Musterprojekt & Tour“ öffnet ihn wieder).
+- Bauteil-Details: eine Hauptaktion („Bearbeiten“); „Bauteil löschen“ ist abgesetzt. Die doppelten Sprünge zu Fotos, Dokumenten und Plan entfallen, sie bleiben im Bauteil-Dossier.
+- Einführungstour: startet im Dashboard, neuer Schritt „Projekt-Dashboard“.
+- Behoben (helles Design): „Zeichenfarbe“ in der Bestandsplanung sowie Sammelaktionen und Auswahlfeld in der Dokumentenverwaltung hatten dunkle Schrift auf dunklem Grund (Variable `--panel` war nie definiert).
+- Aufgeräumt: toter Platzhalter-Zweig „noch nicht implementiert“ und ungenutzter Import entfernt.
+
+## 0.38.2 – Navigation und Lesbarkeit
+- Kopfmenü: „Pläne“ ist in „Bereiche“ aufgegangen. Die Bereiche sind nach Planen, Dokumentieren, Abrechnen und Projekt gegliedert; der Menüknopf zeigt den aktuellen Bereich, der Eintrag ist markiert.
+- Menüs schließen per Klick daneben und mit Escape (Fokus kehrt zum Menüknopf zurück); Menüknöpfe melden `aria-expanded`.
+- Fehler behoben: Das Bauteil-Panel im Planviewer öffnete gleichzeitig das Bereichsmenü.
+- Lesbarkeit: Schriften unter 12 px auf 12 px angehoben (Pin- und Flächenbeschriftungen im Plan bleiben bewusst klein). Status-, Hinweis- und Linkfarben haben im hellen Design mindestens 4,5:1 Kontrast; im dunklen Design bleiben sie hell.
+- Plan-Pins: Textfarbe (weiß oder dunkel) richtet sich nach der Kategoriefarbe.
+- Dunkles Design: Pin-Zähler im Planviewer war unlesbar (Variable `--text` fehlte), rote „Löschen“-Texte und Versionsanzeige sind jetzt besser lesbar.
+- Fotodokumentation: Keine leeren `src`-Attribute mehr, bevor die Bild-URLs bereitstehen.
+- Einführungstour: Text zur Projektnavigation angepasst.
+
+## 0.38.1 – Größere Touch-Ziele und einheitliche Dialoge
+- Auf Tablet und Handy sind Schaltflächen, Auswahlfelder und Eingabefelder mindestens 44 px hoch; Plan-Pins und Eckpunkte behalten ihr Aussehen, bekommen aber eine größere Treffer­fläche.
+- Neue Datei `src/dialogs.tsx`: eigener Bestätigungsdialog statt `confirm()` (Löschen: Fokus auf „Abbrechen“, Escape bricht ab, Tastatur-Fokusfalle) und kurze Meldungen statt `alert()`.
+- Alle 20 Rückfragen und 3 Hinweise der App umgestellt; Beschriftung der Bestätigen-Schaltfläche nennt die Aktion („Löschen“, „Speichern“, „Wiederherstellen“).
+- Fehler behoben: Das Entfernen eines Bauwerks-Pins im Plan fragte doppelt nach.
+- Sichtbarer Tastaturfokus für alle Bedienelemente.
+- Versionsanzeige im Kopfbereich korrigiert (zeigte 0.37.3).
+
 ## 0.36.2
 - Zentraler Markierungsdialog, Pin-/Flächenbearbeitung und neue Startseite. Siehe RELEASE_0.36.2.md.
 

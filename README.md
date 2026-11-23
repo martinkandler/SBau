@@ -74,3 +74,7 @@ Dokumente können in der Dokumentenverwaltung über **Bearbeiten** mehreren Baut
 
 ### PDF-Kopfzeilen (0.35.3)
 Die aktiven PDF-Exporte nutzen `public/sbau-logo.svg` als Firmenlogo. Jede A4-Seite zeigt Dokumententitel, Erstellungsdatum und Seitenzahl. `public/icon.svg` bleibt das Anwendungssymbol.
+
+
+## Projekt-Dashboard (0.38.3)
+Beim Öffnen eines Projekts erscheint zuerst das Dashboard mit Dokumentationsstand, offenen Punkten, Abrechnungsüberblick und den zuletzt hinzugefügten Fotos und Dokumenten. Von dort führen Kacheln und Listeneinträge direkt in die Arbeitsbereiche; das Menü „Bereiche“ ist nach Planen, Dokumentieren, Abrechnen und Projekt gegliedert.
