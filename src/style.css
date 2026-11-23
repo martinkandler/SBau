@@ -393,3 +393,6 @@ button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-vis
   .vc-view button{order:3}
   .vc-zoom{order:4;margin-left:auto}
 }
+
+/* 0.39 Kategorienverwaltung */
+.category-catalog-list{max-height:460px;overflow:auto;border:1px solid var(--border,#8885);border-radius:9px;margin:12px 0}.category-catalog-row{display:flex;align-items:center;gap:10px;padding:7px 10px;border-bottom:1px solid var(--border,#8883);min-height:42px}.category-catalog-name{flex:1;min-width:0;overflow-wrap:anywhere}.category-catalog-row input{width:100%;min-width:100px}.category-catalog-row small{opacity:.65}.category-dot{width:13px;height:13px;border-radius:4px;flex-shrink:0}.category-catalog-row button{white-space:nowrap}.category-settings .structure-actions{flex-wrap:wrap}
