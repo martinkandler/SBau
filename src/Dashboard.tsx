@@ -66,7 +66,7 @@ export default function Dashboard({project,parts,buildings,plans,photos,document
 
   const billing=useMemo(()=>{
     if(!extra||!extra.positions.length)return null;
-    const contract=extra.positions.filter(p=>!isHeading(p)).reduce((s,p)=>s+p.contractQty*p.unitPrice,0);
+    const contract=extra.positions.filter(p=>!isHeading(p)).reduce((s,p)=>s+(Number.isFinite(p.contractQty*p.unitPrice)?p.contractQty*p.unitPrice:0),0);
     const last=(()=>{const sorted=extra.snapshots.slice().sort((a,b)=>a.number-b.number);return sorted[sorted.length-1]})();
     return {contract,count:extra.positions.filter(p=>!isHeading(p)).length,last,share:last&&contract?Math.min(100,Math.round(last.total/contract*100)):0};
   },[extra]);
@@ -144,7 +144,7 @@ export default function Dashboard({project,parts,buildings,plans,photos,document
         <h2 id="dash-h-bill">Abrechnung</h2>
         {billing?<>
           <dl className="dash-facts">
-            <div><dt>Vertragssumme netto</dt><dd>{money(billing.contract)} €</dd></div>
+            <div><dt>Vertragssumme netto</dt><dd>{money(billing.contract)} €</dd></div>{billing.contract>1000000000&&<p className="dashboard-import-warning" role="alert">Achtung: Ungewöhnlich hohe Vertragssumme. Prüfe die importierten LV-Vertragsmengen und Einheitspreise. Frühere fehlerhafte Importwerte bleiben lokal gespeichert; bitte LV-Mengen kontrollieren und das LV nach Datensicherung korrigiert neu importieren. Die Anzeige wird nicht automatisch durch 1.000 geteilt.</p>}
             <div><dt>LV-Positionen</dt><dd>{billing.count}</dd></div>
             {billing.last&&<div><dt>Letzte Abschlagsrechnung</dt><dd>Nr. {billing.last.number} vom {day(billing.last.created)}</dd></div>}
             {billing.last&&<div><dt>Abgerechnet (kumuliert)</dt><dd>{money(billing.last.total)} € ({billing.share} %)</dd></div>}

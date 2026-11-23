@@ -3,6 +3,13 @@ export type LVRow={oz:string;text:string;unit:string;qty:number;price:number;kin
 export type LVImportResult={rows:LVRow[];warnings:string[]};
 const clean=(s:unknown)=>String(s??'').trim();
 export const numberDE=(value:unknown):number=>{let s=clean(value).replace(/\s|€/g,'');if(!s)return 0;if(s.includes(',')&&s.includes('.'))s=s.lastIndexOf(',')>s.lastIndexOf('.')?s.replace(/\./g,'').replace(',','.'):s.replace(/,/g,'');else if(s.includes(','))s=s.replace(',','.');else if(/^[-+]?\d{1,3}(\.\d{3})+$/.test(s))s=s.replace(/\./g,'');return Number(s)};
+/** GAEB DA XML numeric fields always use a dot as decimal separator (no grouping). */
+export const numberGAEB=(value:unknown):number=>{
+ const s=clean(value);
+ if(!s)return 0;
+ if(!/^[+-]?(?:\d+(?:\.\d+)?|\.\d+)$/.test(s))return NaN;
+ return Number(s);
+};
 /** LV quantities use a decimal point in GAEB/iTWO exports (1.000 = 1). */
 export const numberLVQuantity=(value:unknown):number=>{
  let s=clean(value).replace(/\s/g,'');
@@ -40,7 +47,7 @@ export function parseGAEB(xml:string):LVImportResult{
     const d=description(c);const text=d.short||d.long.slice(0,150)||`Position ${oz}`;
     if(!oz){warnings.push('Position ohne OZ übersprungen');continue}
     if(seen.has(oz)){warnings.push(`Doppelte OZ ${oz}`);continue}
-    const qty=numberLVQuantity(txt(child(c,'Qty'))),price=numberDE(txt(child(c,'UP'))||txt(child(c,'UnitPrice')));
+    const qty=numberGAEB(txt(child(c,'Qty'))),price=numberGAEB(txt(child(c,'UP'))||txt(child(c,'UnitPrice')));
     if(!Number.isFinite(qty)||!Number.isFinite(price)){warnings.push(`Ungültige Menge oder EP bei ${oz}`);continue}
     rows.push({oz,text,unit:txt(child(c,'QU'))||txt(child(c,'Unit')),qty,price,kind:'Vertrag',rowType:'Position',longText:d.long,level:parents.length+1});seen.add(oz);
    }else if(c.localName==='BoQBody'||c.localName==='BoQ'||c.localName==='Award'||c.localName==='Itemlist')walk(c,parents);

@@ -333,7 +333,7 @@ export default function DocumentationExport({
       await exportA4Canvases(
         pages,
         'Bauakte – ' + name,
-        `SBauAkte_${name.replace(
+        `sbau.akte_${name.replace(
           /[^a-zA-Z0-9äöüÄÖÜ_-]/g,
           '_'
         )}.pdf`

@@ -3,7 +3,7 @@ import {createPortal} from 'react-dom';
 import {ArrowLeft,ArrowRight,BookOpen,CheckCircle2,X} from 'lucide-react';
 export type TourStep={title:string;description:string;area:string;selector?:string;task?:string};
 export const TOUR_STEPS:TourStep[]=[
- {title:'Willkommen in SBauAkte',description:'Dieses Projekt ist vollständig fiktiv. Du kannst alle Funktionen gefahrlos ausprobieren. Deine echten Projekte bleiben unverändert.',area:'Dashboard',selector:'.topbar'},
+ {title:'Willkommen in sbau.akte',description:'Dieses Projekt ist vollständig fiktiv. Du kannst alle Funktionen gefahrlos ausprobieren. Deine echten Projekte bleiben unverändert.',area:'Dashboard',selector:'.topbar'},
   {title:'Projekt-Dashboard',description:'Beim Öffnen eines Projekts landest du hier: Dokumentationsstand, offene Punkte, Abrechnung und die zuletzt hinzugefügten Fotos und Dokumente. Mit den Kacheln und Listeneinträgen springst du direkt in den passenden Bereich.',area:'Dashboard',selector:'.dash'},
  {title:'Projektnavigation',description:'Über die obere Leiste wechselst du zwischen Projekten und Arbeitsbereichen. „Bereiche“ ist nach Planen, Dokumentieren und Abrechnen gegliedert und zeigt, wo du gerade bist. Der Zurück-Button führt zum vorherigen Arbeitsbereich.',area:'Dashboard',selector:'header'},
  {title:'Bauwerke',description:'Vier fiktive Bauwerke bilden die Struktur dieser Eisenbahnüberführung. Öffne ein Bauwerk, um seine Stammdaten zu prüfen.',area:'Bauwerke',selector:'.section'},

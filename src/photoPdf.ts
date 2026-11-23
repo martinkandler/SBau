@@ -12,5 +12,5 @@ export async function createPhotoPdf(photos:Photo[],parts:Part[],buildings:Build
  ctx.fillStyle='#53677c';wrap(ctx,`${ph.captured||''} | ${parts.find(p=>p.id===ph.partId)?.name||'Ohne Bauteil'}`,64,top+601,1100,20);
  wrap(ctx,[buildings.find(b=>b.id===(ph.buildingId||parts.find(p=>p.id===ph.partId)?.buildingId))?.name,ph.location,ph.description].filter(Boolean).join(' · '),64,top+634,1100,20);
  }pages.push(canvas)}
- await exportA4Canvases(pages,'Fotodokumentation','SBauAkte_Fotodokumentation.pdf');return photos.length;
+ await exportA4Canvases(pages,'Fotodokumentation','sbau.akte_Fotodokumentation.pdf');return photos.length;
 }

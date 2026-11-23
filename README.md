@@ -1,80 +1,32 @@
-> Entwicklungsstand 0.34.1: Bitte Hinweise und offene Tests in [DEVELOPMENT.md](DEVELOPMENT.md) beachten.
+# sbau.akte – Digitale Baustellendokumentation
 
-### Version 0.27.0
-- Importvorschau mit überprüfbaren Dokumentarten und Bauteilvorschlägen.
-- Mehrfachzuordnung bereits vor dem Speichern, einzelne Dateien aus Import entfernen.
-- Konservative Kennungserkennung, keine automatischen Zuordnungen durch Teiltreffer.
-- Nach Fehlern bleiben noch nicht gespeicherte Dateien in der Importwarteschlange.
+**Aktuelle Version: 0.39.3 (Entwicklungsstand)** · React, TypeScript, Vite, Dexie/IndexedDB · offlinefähige PWA
 
-# SBauAkte 0.14.2 – Build-Korrekturen
+## Funktionsumfang
+- Projekt-Dashboard, Projektverwaltung und JSON-Sicherung
+- Planviewer für PDF/Bilder mit Pin- und Flächenmarkierungen, Zoom, Filter und Revisionsverwaltung
+- Getrennte globale und projektbezogene Kategorien für Bauteile, Pläne und Qualitätsunterlagen
+- Bauteilakten, Fotodokumentation, Bestandsplanung und Qualitätsnachweise
+- LV-Import (Excel, CSV und GAEB), Aufmaß und Abrechnung
 
-Die Version korrigiert den Dokumenten-State, die Dexie-Transaktion beim Import und den PDF.js-Worker. Die GitHub-Pages-Basis ist auf `/SBau-/` eingestellt.
+## Neuerungen in 0.39.3
+- Flächenlinien und Bearbeitungsgriffe beim Zoom besser lesbar; unabhängige Schalter für Transparenz und Sichtbarkeit von Pins/Flächen
+- Ausgewählten Plan direkt aus der Planverwaltung öffnen
+- Versionsanzeige und Funktionsübersicht aktualisiert, UI-Branding vereinheitlicht
+- Dashboard weist bei außergewöhnlich hohen Vertragssummen auf möglicherweise fehlerhafte importierte LV-Werte hin
 
-**Hinweis:** Der Produktionsbuild konnte in der Bearbeitungsumgebung nicht ausgeführt werden, da die npm-Paketinstallation nicht abgeschlossen werden konnte. Bitte den GitHub-Actions-Build nach dem Hochladen prüfen.
-
-# SBauAkte 0.14.1 – GitHub Pages Fix
-
-## Veröffentlichung über GitHub Pages
-
-1. Entpacke die ZIP-Datei. Lade **alle Dateien und Ordner inklusive `.github/workflows/deploy.yml`** in das Stammverzeichnis deines GitHub-Repositories hoch. (Bei GitHub Upload files werden versteckte Ordner möglicherweise nicht einfach ausgewählt; überprüfe, dass `.github/workflows/deploy.yml` wirklich vorhanden ist.)
-2. Der Standardbranch muss `main` heißen. Bei anderem Branchnamen `branches: [main]` in `.github/workflows/deploy.yml` anpassen.
-3. Unter **Settings → Pages → Build and deployment → Source** die Option **GitHub Actions** wählen.
-4. Unter **Actions** den Workflow `Build and deploy SBauAkte to GitHub Pages` prüfen. Er muss erfolgreich durchlaufen.
-5. Website unter `https://BENUTZER.github.io/REPOSITORY/` aufrufen (oder der in Pages angezeigten Adresse). Bei einem Repository namens `BENUTZER.github.io` ist es die Root-Domain.
-
-Wichtig: `index.html` ist eine Entwicklungsdatei und funktioniert nicht als direkt veröffentlichte HTML-Seite. GitHub Actions erzeugt und veröffentlicht `dist/`. Die relative Vite-Basis `./` berücksichtigt GitHub-Pages-Unterpfade.
-
-## Lokal
-
-```sh
+## Entwicklung und Deployment
+```bash
 npm install
 npm run dev
+npm run build
 ```
 
-Produktionsbuild: `npm run build`; anschließend `npm run preview`.
+Für GitHub Pages den Workflow `.github/workflows/deploy.yml` verwenden. Die veröffentlichte Anwendung läuft im Browser; Projektdateien liegen lokal in IndexedDB. Vor Änderungen oder Neuimporten Projekt-Backup erstellen.
 
-## Daten und Sicherheit
+**Wichtig zur LV-Summe:** Der Mengenparser interpretiert `1.000` als Menge `1`. Bereits zuvor falsch importierte Datensätze werden nicht stillschweigend umgerechnet. Die Vertragssumme berechnet sich aus der Summe von Vertragsmenge × Einheitspreis. Bei Abweichungen LV-Daten prüfen und korrigieren.
 
-IndexedDB speichert Daten nur im jeweiligen Browser und unter derselben Website-Adresse. Ein Wechsel der Repository-Adresse, Browserdaten-Löschung oder privater Modus kann den Zugriff auf lokale Daten verhindern. Vor Änderungen an produktiven Daten unbedingt Sicherungen anlegen.
+**Buildstatus:** In der aktuellen Bearbeitungsumgebung war wegen nicht erreichbarer npm-Registry kein vollständiger Build möglich. GitHub Actions muss vor Freigabe erfolgreich laufen.
 
-## Status
-
-Dieser Patch korrigiert die Veröffentlichungs-Konfiguration, ersetzt aber keine vollständigen Funktionstests auf iPad und Windows.
-
-## Version 0.15 – Bestandsplanung
-Im Projektmenü **Bereiche → Bestandsplanung** öffnen. Zuerst einen Übersichtsplan im Bereich **Übersichtspläne** importieren. Im Bestandsplan ein Werkzeug auswählen und auf dem Plan zeichnen. Nach dem Loslassen Bezeichnung, Datum, Bauteil, Kategorien und Status erfassen und speichern. Die Änderungen werden lokal in IndexedDB abgelegt. Die Kategorieauswahl filtert Liste und Zeichnungen gemeinsam. Der CSV-Export gibt die Änderungsliste des gewählten Plans aus. Die Projektsicherung enthält nun auch die Bestandsänderungen.
-
-**GitHub Pages:** Bestehenden Repository-Inhalt durch die Dateien dieses Pakets aktualisieren, `.github/workflows/deploy.yml` beibehalten, anschließend GitHub Actions prüfen. Die Vite-Base ist weiterhin auf `/SBau-/` eingestellt und muss bei abweichendem Repository-Namen angepasst werden.
-
-**Hinweis:** Ein erfolgreicher GitHub-Actions-Build ist vor der Nutzung erforderlich. Diese Fassung wurde hier nicht vollständig gebaut oder auf iPad getestet. Vor Updates eine Projektsicherung anlegen.
-
-
-## Version 0.16 – Bestandsplanung
-Im Bereich Bestandsplanung sind jetzt Navigation, Auswahl/Verschieben, Text, Rückgängig/Wiederholen und eine Browser-Druckansicht enthalten. Für PDF: **Plan drucken / PDF** auswählen und im Druckdialog **Als PDF sichern**. Dies ist noch kein maßstabsgetreuer Export. Originalpläne werden nicht verändert.
-
-**Achtung:** Neue Funktionen wurden noch nicht vollständig gebaut und auf iPad getestet. Bitte vor Verwendung eine Sicherung anlegen.
-
-
-### Version 0.24.0
-Automatische Nachweiserkennung anhand von Bauteilzuordnung und Dokumentart. In der Dokumentationsübersicht kann zwischen automatischer und manueller Auswertung gewechselt werden. Die Erkennung ist keine fachliche Prüfung.
-
-
-### Version 0.26.0
-Dokumente können in der Dokumentenverwaltung über **Bearbeiten** mehreren Bauteilen zugeordnet werden. Eine Datei wird nur einmal gespeichert. Die automatische Nachweiserkennung berücksichtigt alle zugeordneten Bauteile.
-
-## Hinweise zu 0.33.0
-
-**Fotobericht:** In der Fotodokumentation Fotos auswählen (ohne Auswahl werden die aktuell gefilterten Fotos verwendet), anschließend „Fotobericht (2 je Seite)“ anklicken. Die erzeugte HTML-Datei lokal im Browser öffnen und über **Drucken → Als PDF sichern** exportieren. Das Bildmaterial bleibt auf dem Gerät. Der Bericht kann bei vielen Fotos sehr groß werden.
-
-**Bestandsplan:** „Plan als PNG“ exportiert die aktuelle Seite inklusive sichtbarer Markierungen. „Änderungen sichern (JSON)“ exportiert Metadaten und Vektor-Koordinaten für spätere Nachbearbeitung. Diese JSON-Sicherung ist noch kein Importformat. Der Druckdialog ist weiterhin für PDF-Ausgaben verfügbar.
-
-**Datenschutz und Datensicherung:** Fotos und Dokumente liegen lokal in IndexedDB. Browserdaten nicht ohne vorherigen Projektexport löschen. Vor jeder Aktualisierung ein Backup erstellen. Neue Funktionen zunächst mit einem Testprojekt ausprobieren.
-
-**Build-Status:** Die TypeScript-Syntax wurde geprüft, aber ein vollständiger `npm run build` konnte ohne verfügbare npm-Pakete nicht ausgeführt werden. GitHub Actions muss den Produktions-Build bestätigen.
-
-### PDF-Kopfzeilen (0.35.3)
-Die aktiven PDF-Exporte nutzen `public/sbau-logo.svg` als Firmenlogo. Jede A4-Seite zeigt Dokumententitel, Erstellungsdatum und Seitenzahl. `public/icon.svg` bleibt das Anwendungssymbol.
-
-
-## Projekt-Dashboard (0.38.3)
-Beim Öffnen eines Projekts erscheint zuerst das Dashboard mit Dokumentationsstand, offenen Punkten, Abrechnungsüberblick und den zuletzt hinzugefügten Fotos und Dokumenten. Von dort führen Kacheln und Listeneinträge direkt in die Arbeitsbereiche; das Menü „Bereiche“ ist nach Planen, Dokumentieren, Abrechnen und Projekt gegliedert.
+## Versionspflege
+Bei jeder Veröffentlichung `src/appVersion.ts`, `package.json`, `CHANGELOG.md` und die Funktionsübersicht in `src/ProgramInfo.tsx` prüfen und gemeinsam aktualisieren. Historische Release-Dateien bleiben als Archiv erhalten.

@@ -46,6 +46,6 @@ export async function printHeader(ctx:CanvasRenderingContext2D,title:string,page
  ctx.fillStyle='#0874b7';ctx.fillRect(LEFT,149,PAGE_WIDTH-2*LEFT,4);
  ctx.restore();
 }
-export function printFooter(ctx:CanvasRenderingContext2D){ctx.save();ctx.fillStyle='#d9e1ea';ctx.fillRect(LEFT,1693,PAGE_WIDTH-2*LEFT,2);ctx.fillStyle='#53677c';ctx.font='17px Arial';ctx.fillText('SBauAkte · Sächsische Bau GmbH',LEFT,1723);ctx.restore()}
+export function printFooter(ctx:CanvasRenderingContext2D){ctx.save();ctx.fillStyle='#d9e1ea';ctx.fillRect(LEFT,1693,PAGE_WIDTH-2*LEFT,2);ctx.fillStyle='#53677c';ctx.font='17px Arial';ctx.fillText('sbau.akte · Sächsische Bau GmbH',LEFT,1723);ctx.restore()}
 export async function exportA4Canvases(pages:HTMLCanvasElement[],title:string,fileName:string){const pdfPages:PdfPage[]=[];const created=new Date();for(let i=0;i<pages.length;i++){const ctx=pages[i].getContext('2d');if(!ctx)throw new Error('Canvas nicht verfügbar');await printHeader(ctx,title,i+1,pages.length,created);printFooter(ctx);pdfPages.push(await canvasPage(pages[i]))}downloadBlob(pdfFromPages(pdfPages),fileName)}
 export function drawContained(ctx:CanvasRenderingContext2D,image:CanvasImageSource,width:number,height:number,top=190,bottom=1640){const availableWidth=PAGE_WIDTH-2*LEFT,availableHeight=bottom-top;const scale=Math.min(availableWidth/width,availableHeight/height);const w=width*scale,h=height*scale;ctx.drawImage(image,(PAGE_WIDTH-w)/2,top+(availableHeight-h)/2,w,h)}
