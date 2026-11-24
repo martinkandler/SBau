@@ -1,5 +1,6 @@
-## 0.39.25 – Feldaufmaßkopf und Paketbereinigung
+## 0.39.26 – Feldaufmaß: automatische Gewerke
 
-- Bauvorhaben, Feldaufmaßnummer und Gewerk neben dem Logo im Kopf; Leistungszuordnung und Ausgeführte Leistungen – Maße und Berechnung.
-- Eine aktuelle RELEASE.md; bisherige Release-Notizen im CHANGELOG archiviert. Nicht verwendete Excel-Vorlage entfernt.
+- Größerer PDF-Titel; Gewerk aus den zugeordneten Bauteilkategorien, ohne Dubletten.
+- Gewerk mit eigener Beschriftung im Kopf; keine manuelle Eingabe.
+- Beide ungenutzten Info.txt entfernt.
 
