@@ -1,3 +1,8 @@
+## 0.39.20 – ZIP-Export
+
+- Separater ZIP-Export mit Abrechnungs-PDF ohne eingebettete Anlagen, Dateipfadverzeichnis, Originalplänen, QS-Nachweisen, Originalfotos und einzelnen aktiven Feldaufmaßen.
+- Doppelte Dateizuordnungen werden zusammengeführt; gleichnamige Dateien erhalten eindeutige Namen. PDF-Gesamtexport bleibt erhalten.
+
 ## 0.39.19 – Vektor-PDF und Feldaufmaß
 
 - Gemeinsame PDF-Ausgabe mit selektierbaren Texten, Tabellen und Feldaufmaßskizzen.
