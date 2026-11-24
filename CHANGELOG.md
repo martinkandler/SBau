@@ -1,3 +1,9 @@
+## 0.39.17 – Tabellarischer Abrechnungs-PDF-Export
+
+- Vier bisherige Tabellenspalten wiederhergestellt.
+- Zwischenüberschriften, Trennlinien, Textumbruch und dynamische Zeilenhöhen.
+- Wiederholter Tabellenkopf bei Seitenwechsel; Anlagenexport unverändert.
+
 ## 0.39.16 – Abrechnungs-PDF und Feldaufmaß
 
 - Getrennte Erläuterungen, Hinweise und Zuordnungen im PDF.
