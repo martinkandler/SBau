@@ -1,3 +1,8 @@
+## 0.39.22 – Kompaktes Feldaufmaß
+
+- LV-Position mit Kurztext in einer Zeile; Bauwerke und Bauteile getrennt. Kostenstelle, doppeltes Datum und allgemeine Erläuterungen/Hinweise entfallen nur im Feldaufmaß. Eigene Aufmaßtexte bleiben erhalten.
+- Feldaufmaß-Checkbox linksbündig; einseitiges A4-Layout und alle Exportwege bleiben erhalten.
+
 ## 0.39.21 – Einseitiges Feldaufmaß
 
 - Festes A4-Formblatt mit dynamischem Skizzenbereich und Unterschriften am Seitenende.
