@@ -1,3 +1,4 @@
+import {createPortal} from 'react-dom';
 import {useCallback,useEffect,useRef,useState} from 'react';
 import {AlertTriangle,CheckCircle2,Info,X,XCircle} from 'lucide-react';
 
@@ -76,7 +77,7 @@ function ConfirmView({request,onClose}:{request:ConfirmRequest;onClose:(value:bo
 
   return <div className="dlg-back" onClick={e=>{if(e.target===e.currentTarget)onClose(false)}}>
     <div className={'dlg'+(danger?' dlg--danger':'')} role="alertdialog" aria-modal="true" aria-labelledby={'dlg-title-'+id} aria-describedby={detail?'dlg-detail-'+id:undefined}>
-      <div className="dlg-head">
+      <button type="button" className="modal-close-x dlg-close" aria-label="Schließen" onClick={()=>onClose(false)}><X size={20}/></button><div className="dlg-head">
         <span className="dlg-icon" aria-hidden="true">{danger?<AlertTriangle size={22}/>:<Info size={22}/>}</span>
         <div className="dlg-text">
           <h2 id={'dlg-title-'+id}>{heading}</h2>
@@ -102,6 +103,7 @@ export function DialogHost(){
   useEffect(()=>{
     confirmListener=request=>setQueue(items=>[...items,request]);
     toastListener=toast=>{
+      if(toast.kind==='error'){setQueue(items=>[...items,{id:toast.id,message:toast.message,options:{confirmLabel:'OK',cancelLabel:'Schließen',danger:false},resolve:()=>{}}]);return}
       setToasts(items=>[...items.slice(-2),toast]);
       window.setTimeout(()=>dismiss(toast.id),toast.kind==='error'?9000:4500);
     };
@@ -116,7 +118,7 @@ export function DialogHost(){
   };
 
   return <>
-    {active&&<ConfirmView key={active.id} request={active} onClose={close}/>}
+    {active&&createPortal(<ConfirmView key={active.id} request={active} onClose={close}/>,document.body)}
     <div className="toast-stack" aria-live="polite">
       {toasts.map(t=>{
         const Icon=toastIcons[t.kind];
@@ -128,4 +130,13 @@ export function DialogHost(){
       })}
     </div>
   </>;
+}
+
+/** Fehler bleiben sichtbar, bis sie ausdrücklich bestätigt werden. */
+export function useErrorPopup(message:string,clear:(value:string)=>void){
+ useEffect(()=>{if(message){notify(message,'error');clear('')}},[message,clear]);
+}
+
+export function usePopupErrorState():[string,(message:string)=>void]{
+ const setError=useCallback((message:string)=>{if(message)notify(message,'error')},[]);return ['',setError];
 }

@@ -1,3 +1,4 @@
+import {usePopupErrorState} from './dialogs';
 import {effectiveCategories} from './categoryService';
 import {confirmDialog} from './dialogs';
 import React,{useEffect,useState} from 'react';
@@ -9,7 +10,7 @@ const statuses=['In Bearbeitung','In Prüfung','Freigegeben','Nicht freigegeben'
 const shapes=['Kreis','Quadrat','Rechteck','Dreieck','Oval','Raute','Wolke'];
 type Props={projectId:string;plans:Plan[];parts:Part[];categories:Category[];onReload:()=>Promise<void>;tab:'buildings'|'plans'|'parts';onOpenPlan?:(planId:string)=>void};
 export default function StructureWorkspace({projectId,plans,parts,categories,onReload,tab,onOpenPlan}:Props){
- const [buildings,setBuildings]=useState<Building[]>([]),[revisions,setRevisions]=useState<PlanRevision[]>([]),[areas,setAreas]=useState<PlanArea[]>([]),[chosen,setChosen]=useState(''),[filter,setFilter]=useState(''),[error,setError]=useState(''),[notice,setNotice]=useState('');
+ const [buildings,setBuildings]=useState<Building[]>([]),[revisions,setRevisions]=useState<PlanRevision[]>([]),[areas,setAreas]=useState<PlanArea[]>([]),[chosen,setChosen]=useState(''),[filter,setFilter]=useState(''),[error,setError]=usePopupErrorState(),[notice,setNotice]=useState('');
  const [planArchiveCategories,setPlanArchiveCategories]=useState<import('./db').AppCategory[]>([]);
  useEffect(()=>{void effectiveCategories('plan',projectId).then(setPlanArchiveCategories)},[projectId]);
  const [buildingDraft,setBuildingDraft]=useState<Building|null>(null),[partDraft,setPartDraft]=useState<Part|null>(null),[planDraft,setPlanDraft]=useState<Plan|null>(null);

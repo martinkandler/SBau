@@ -1,3 +1,11 @@
+## 0.39.12 – LV-Baum und Leistungserfassung
+
+- Separater LV-Auswahldialog mit Titelhierarchie und Suche.
+- Mehrfachzuordnung von Bauwerken und Bauteilen, QS-Filter nach Zuordnung.
+- Status aus Leistungserfassung entfernt.
+- Kreiswerkzeug in Feldaufmaß, Fotoeditor, Bestandsplanung und grafischem Aufmaß.
+- Zentrale Fehlerdialoge oberhalb der Arbeitsfenster.
+
 ## 0.39.11 – Leistungserfassung
 
 - Vollständige paginierte HLV-/NT-Auswahl, Mengeneinheit aus LV, mehrere Pläne, Fotos im Feldaufmaß, sichtbare Speicherfehler.

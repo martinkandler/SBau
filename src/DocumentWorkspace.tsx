@@ -1,3 +1,4 @@
+import {usePopupErrorState} from './dialogs';
 import {effectiveCategories} from './categoryService';
 import {confirmDialog} from './dialogs';
 import {loadDocumentKinds,defaultKinds} from './DocumentKindSettings';
@@ -12,7 +13,7 @@ export default function DocumentWorkspace({projectId,parts,categories,initialPar
  useEffect(()=>{void effectiveCategories('quality',projectId).then(setArchiveCategories)},[projectId]);
  const [kinds,setKinds]=useState<string[]>(defaultKinds);const [pending,setPending]=useState<{file:File;kind:string;partIds:string[];archiveCategoryId:string}[]>([]),[importing,setImporting]=useState(false),[importSearch,setImportSearch]=useState('');
  const [marked,setMarked]=useState<string[]>([]),[bulkKind,setBulkKind]=useState(''),[bulkPart,setBulkPart]=useState(''),[bulkAction,setBulkAction]=useState<'add'|'remove'|'replace'>('add'),[onlyUnassigned,setOnlyUnassigned]=useState(false),[sort,setSort]=useState<'newest'|'oldest'|'name'|'kind'>('newest'),[busy,setBusy]=useState(false);
- const [items,setItems]=useState<ConstructionDocument[]>([]),[search,setSearch]=useState(''),[partFilter,setPartFilter]=useState(''),[kindFilter,setKindFilter]=useState(''),[selected,setSelected]=useState<ConstructionDocument|null>(null),[edit,setEdit]=useState<ConstructionDocument|null>(null),[url,setUrl]=useState(''),[error,setError]=useState('');
+ const [items,setItems]=useState<ConstructionDocument[]>([]),[search,setSearch]=useState(''),[partFilter,setPartFilter]=useState(''),[kindFilter,setKindFilter]=useState(''),[selected,setSelected]=useState<ConstructionDocument|null>(null),[edit,setEdit]=useState<ConstructionDocument|null>(null),[url,setUrl]=useState(''),[error,setError]=usePopupErrorState();
  const reload=async()=>{setItems(await db.documents.where('projectId').equals(projectId).toArray())};
  useEffect(()=>{void loadDocumentKinds(projectId).then(list=>setKinds(list.filter(k=>!k.archived).map(k=>k.name).sort((a,b)=>a.localeCompare(b,'de'))));reload();setSelected(null);setPartFilter(initialPartId);setMarked([])},[projectId]);
  useEffect(()=>{if(!selected){setUrl('');return}const u=URL.createObjectURL(selected.original);setUrl(u);return()=>URL.revokeObjectURL(u)},[selected]);

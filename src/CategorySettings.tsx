@@ -1,3 +1,4 @@
+import {usePopupErrorState} from './dialogs';
 import {useEffect,useState,type ReactNode} from 'react';
 import {db,type AppCategory,type CategorySystem} from './db';
 import {ensureCategoryCatalog,addProjectCategory,setProjectCategoryHidden} from './categoryService';
@@ -7,7 +8,7 @@ export default function CategorySettings({projectId,onChanged}:{projectId:string
  const [items,setItems]=useState<AppCategory[]>([]);
  const [hidden,setHidden]=useState<string[]>([]);
  const [collapsed,setCollapsed]=useState<string[]>([]);
- const [name,setName]=useState('');const [parent,setParent]=useState('');const [color,setColor]=useState('#2674c7');const [error,setError]=useState('');
+ const [name,setName]=useState('');const [parent,setParent]=useState('');const [color,setColor]=useState('#2674c7');const [error,setError]=usePopupErrorState();
  const refresh=async()=>{await ensureCategoryCatalog();const [all,settings]=await Promise.all([db.appCategories.where('system').equals(system).toArray(),db.projectCategorySettings.where('projectId').equals(projectId).toArray()]);setItems(all.filter(x=>x.scope==='global'||x.projectId===projectId).sort((a,b)=>a.sortOrder-b.sortOrder));setHidden(settings.filter(s=>s.hidden).map(s=>s.categoryId))};
  useEffect(()=>{void refresh()},[system,projectId]);
  const notify=async()=>{await refresh();onChanged?.()};
