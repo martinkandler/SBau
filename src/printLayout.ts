@@ -9,7 +9,8 @@ const HEADER_BOTTOM=160;
 const LOGO_MAX_WIDTH=330;
 const LOGO_MAX_HEIGHT=79;
 const fieldHeaders=new WeakMap<HTMLCanvasElement,string[]>();
-export function setFieldHeader(canvas:HTMLCanvasElement,lines:string[]){fieldHeaders.set(canvas,lines)}
+export function setFieldHeader(canvas:HTMLCanvasElement,lines:string[]){fieldHeaders.set(canvas,lines);return fieldHeaderRule(lines)+19}
+const fieldHeaderRule=(lines:string[])=>Math.max(149,105+lines.length*23+18);
 let logoPromise:Promise<HTMLImageElement>|undefined;
 function logoImage():Promise<HTMLImageElement>{
  return logoPromise??=(async()=>{
@@ -47,9 +48,9 @@ export async function printHeader(ctx:CanvasRenderingContext2D,title:string,page
  const details=fieldHeaders.get(ctx.canvas);
  if(details){ctx.font='bold 20px Arial';ctx.fillStyle='#173650';details.forEach((line,i)=>ctx.fillText(line,textLeft,105+i*23,available));}
  ctx.font='19px Arial';ctx.fillStyle='#53677c';
- ctx.fillText(`Datum: ${date.toLocaleDateString('de-DE')}`,textLeft,details?105+details.length*23:109,available);
- ctx.textAlign='right';if(total>0)ctx.fillText(`Seite ${page} von ${total}`,right,details?250:135);ctx.textAlign='left';
- ctx.fillStyle='#0874b7';ctx.fillRect(LEFT,details?260:149,PAGE_WIDTH-2*LEFT,4);
+ ctx.fillText(`Datum: ${date.toLocaleDateString('de-DE')}`,textLeft,details?105+details.length*23:109,details?available-170:available);
+ ctx.textAlign='right';if(total>0)ctx.fillText(`Seite ${page} von ${total}`,right,details?fieldHeaderRule(details)-10:135);ctx.textAlign='left';
+ ctx.fillStyle='#0874b7';ctx.fillRect(LEFT,details?fieldHeaderRule(details):149,PAGE_WIDTH-2*LEFT,4);
  ctx.restore();
 }
 export function printFooter(ctx:CanvasRenderingContext2D){ctx.save();ctx.fillStyle='#d9e1ea';ctx.fillRect(LEFT,1693,PAGE_WIDTH-2*LEFT,2);ctx.fillStyle='#53677c';ctx.font='17px Arial';ctx.fillText('sbau.akte · Sächsische Bau GmbH',LEFT,1723);ctx.restore()}

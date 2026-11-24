@@ -1,6 +1,5 @@
-## 0.39.26 – Feldaufmaß: automatische Gewerke
+## 0.39.27 – Kompakter Feldaufmaßkopf
 
-- Größerer PDF-Titel; Gewerk aus den zugeordneten Bauteilkategorien, ohne Dubletten.
-- Gewerk mit eigener Beschriftung im Kopf; keine manuelle Eingabe.
-- Beide ungenutzten Info.txt entfernt.
+- Dynamische Kopfhöhe abhängig von Bauvorhaben und Gewerken; Seitenzahl neben dem Datum.
+- Gewonnener Platz steht dem Aufmaßinhalt zur Verfügung; A4 und Unterschriften unverändert.
 
