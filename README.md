@@ -1,3 +1,9 @@
+## 0.39.14 – Hierarchische Leistungsauswahl
+
+- Separate Mehrfachauswahl für Bauwerke und Bauteile mit aufklappbaren Bauwerken.
+- Separate Planauswahl nach den vier Ebenen der Planverwaltung.
+- Fotos und QS-Nachweise nach gewählten Bauwerken und Bauteilen gefiltert.
+
 ## 0.39.13 – LV-Baum und Leistungserfassung
 
 - Separater LV-Auswahldialog mit Titelhierarchie und Suche.
