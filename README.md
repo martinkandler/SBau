@@ -1,3 +1,13 @@
+## 0.39.19 – Vektor-PDF und Feldaufmaß
+
+- Gemeinsame PDF-Ausgabe mit selektierbaren Texten, Tabellen und Feldaufmaßskizzen.
+- Neues Feldaufmaßlayout; Anlagenverzeichnis mit tatsächlichen Startseiten ohne Anlagendeckblätter.
+- Original-PDF-Nachweise bleiben erhalten. Bestandsplan-Komposit und Fotos bleiben rasterbasiert.
+
+## 0.39.18 – Optionales Feldaufmaß
+
+- Feldaufmaß per Checkbox aktivieren; nur aktivierte Aufmaße werden exportiert. Bestehende Daten bleiben erhalten.
+
 ## 0.39.17 – Tabellarischer Abrechnungs-PDF-Export
 
 - Vier bisherige Tabellenspalten wiederhergestellt.

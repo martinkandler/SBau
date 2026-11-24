@@ -1,5 +1,7 @@
 /** Shared A4 PDF layout. The official company logo is public/sbau-logo.svg. */
-import {canvasPage,downloadBlob,pdfFromPages,type PdfPage} from './pdfExport';
+import {downloadBlob} from './pdfExport';
+import {PDFDocument} from 'pdf-lib';
+import {recordedContext,appendVectorPage} from './vectorPdf';
 export const PAGE_WIDTH=1240;
 export const PAGE_HEIGHT=1754;
 const LEFT=64;
@@ -16,7 +18,7 @@ function logoImage():Promise<HTMLImageElement>{
   return img;
  })().catch(error=>{logoPromise=undefined;throw error});
 }
-export function newA4Page(){const canvas=document.createElement('canvas');canvas.width=PAGE_WIDTH;canvas.height=PAGE_HEIGHT;const ctx=canvas.getContext('2d');if(!ctx)throw new Error('Canvas nicht verfügbar');ctx.fillStyle='#fff';ctx.fillRect(0,0,PAGE_WIDTH,PAGE_HEIGHT);return {canvas,ctx};}
+export function newA4Page(){const canvas=document.createElement('canvas');canvas.width=PAGE_WIDTH;canvas.height=PAGE_HEIGHT;const ctx=recordedContext(canvas);if(!ctx)throw new Error('Canvas nicht verfügbar');ctx.fillStyle='#fff';ctx.fillRect(0,0,PAGE_WIDTH,PAGE_HEIGHT);return {canvas,ctx};}
 export async function printHeader(ctx:CanvasRenderingContext2D,title:string,page:number,total:number,date=new Date()){
  ctx.save();
  ctx.fillStyle='#fff';ctx.fillRect(0,0,PAGE_WIDTH,HEADER_BOTTOM);
@@ -47,5 +49,7 @@ export async function printHeader(ctx:CanvasRenderingContext2D,title:string,page
  ctx.restore();
 }
 export function printFooter(ctx:CanvasRenderingContext2D){ctx.save();ctx.fillStyle='#d9e1ea';ctx.fillRect(LEFT,1693,PAGE_WIDTH-2*LEFT,2);ctx.fillStyle='#53677c';ctx.font='17px Arial';ctx.fillText('sbau.akte · Sächsische Bau GmbH',LEFT,1723);ctx.restore()}
-export async function exportA4Canvases(pages:HTMLCanvasElement[],title:string,fileName:string){const pdfPages:PdfPage[]=[];const created=new Date();for(let i=0;i<pages.length;i++){const ctx=pages[i].getContext('2d');if(!ctx)throw new Error('Canvas nicht verfügbar');await printHeader(ctx,title,i+1,pages.length,created);printFooter(ctx);pdfPages.push(await canvasPage(pages[i]))}downloadBlob(pdfFromPages(pdfPages),fileName)}
+const originals=new WeakMap<HTMLCanvasElement,{doc:PDFDocument;index:number}>();
+export async function originalPdfPages(blob:Blob){const doc=await PDFDocument.load(await blob.arrayBuffer());return doc.getPageIndices().map(index=>{const c=document.createElement('canvas');originals.set(c,{doc,index});return c})}
+export async function exportA4Canvases(pages:HTMLCanvasElement[],title:string,fileName:string){const doc=await PDFDocument.create();for(let i=0;i<pages.length;i++){const original=originals.get(pages[i]);if(original){const [p]=await doc.copyPages(original.doc,[original.index]);doc.addPage(p);continue}const ctx=recordedContext(pages[i]);await printHeader(ctx,title,i+1,pages.length);printFooter(ctx);await appendVectorPage(doc,pages[i])}downloadBlob(new Blob([new Uint8Array(await doc.save())],{type:'application/pdf'}),fileName)}
 export function drawContained(ctx:CanvasRenderingContext2D,image:CanvasImageSource,width:number,height:number,top=190,bottom=1640){const availableWidth=PAGE_WIDTH-2*LEFT,availableHeight=bottom-top;const scale=Math.min(availableWidth/width,availableHeight/height);const w=width*scale,h=height*scale;ctx.drawImage(image,(PAGE_WIDTH-w)/2,top+(availableHeight-h)/2,w,h)}

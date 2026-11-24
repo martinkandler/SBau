@@ -1,6 +1,5 @@
 
 import React, { useEffect, useState } from 'react';
-import * as pdfjs from 'pdfjs-dist';
 import { Download, FileText, FolderArchive } from 'lucide-react';
 import {
   db,
@@ -14,13 +13,9 @@ import {
   newA4Page,
   exportA4Canvases,
   drawContained,
+  originalPdfPages,
   PAGE_WIDTH
 } from './printLayout';
-
-pdfjs.GlobalWorkerOptions.workerSrc = new URL(
-  'pdfjs-dist/build/pdf.worker.min.mjs',
-  import.meta.url
-).toString();
 
 const ink = '#172c40';
 
@@ -93,56 +88,7 @@ async function documentPages(doc: ConstructionDocument) {
     doc.mime === 'application/pdf' ||
     doc.name.toLowerCase().endsWith('.pdf')
   ) {
-    const task = pdfjs.getDocument({
-      data: new Uint8Array(await blob.arrayBuffer())
-    });
-
-    try {
-      const pdf = await task.promise;
-      const result: HTMLCanvasElement[] = [];
-
-      for (let i = 1; i <= pdf.numPages; i++) {
-        const pg = await pdf.getPage(i);
-        const vp = pg.getViewport({ scale: 1.25 });
-
-        const source = document.createElement('canvas');
-
-        source.width = Math.ceil(vp.width);
-        source.height = Math.ceil(vp.height);
-
-        const context = source.getContext('2d');
-
-        if (!context) {
-          throw new Error(
-            'Canvas-Kontext konnte nicht erstellt werden.'
-          );
-        }
-
-        // Korrektur für die verwendete pdfjs-dist-Version:
-        // Die Eigenschaft "canvas" wird hier nicht unterstützt.
-        await pg.render({
-          canvasContext: context,
-          viewport: vp
-        }).promise;
-
-        const { canvas, ctx } = newA4Page();
-
-        drawContained(
-          ctx,
-          source,
-          source.width,
-          source.height,
-          190,
-          1630
-        );
-
-        result.push(canvas);
-      }
-
-      return result;
-    } finally {
-      await task.destroy();
-    }
+    return originalPdfPages(blob);
   }
 
   if (doc.mime.startsWith('image/')) {
