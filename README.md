@@ -1,3 +1,8 @@
+## 0.39.21 – Einseitiges Feldaufmaß
+
+- Festes A4-Formblatt mit dynamischem Skizzenbereich und Unterschriften am Seitenende.
+- Gemeinsames Layout für Einzel-, PDF- und ZIP-Export; Warnung bei nicht lesbar unterzubringenden Inhalten.
+
 ## 0.39.20 – ZIP-Export
 
 - Separater ZIP-Export mit Abrechnungs-PDF ohne eingebettete Anlagen, Dateipfadverzeichnis, Originalplänen, QS-Nachweisen, Originalfotos und einzelnen aktiven Feldaufmaßen.
