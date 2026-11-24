@@ -1,3 +1,11 @@
+## 0.39.24 – Reihenfolge Feldaufmaß
+
+- Ausgeführte Leistungen / Maße vor der Aufmaßskizze; Abschnittsnummern angepasst. Einseitiges Layout und alle Exportwege unverändert.
+
+## 0.39.23 – Feldaufmaß Kopf und Textumbruch
+
+- Bauvorhaben, Feldaufmaßnummer und Gewerk im Kopfbereich; Abrechnungszettel entfällt. Aufmaßtext nutzt die volle Breite mit begrenzter PDF-Textbreite.
+
 ## 0.39.22 – Kompaktes Feldaufmaß
 
 - LV-Position mit Kurztext in einer Zeile; Bauwerke und Bauteile getrennt. Kostenstelle, doppeltes Datum und allgemeine Erläuterungen/Hinweise entfallen nur im Feldaufmaß. Eigene Aufmaßtexte bleiben erhalten.
