@@ -1,3 +1,10 @@
+## 0.39.15 – Abrechnungsleistungen übertragen
+
+- Einzelne Leistungen duplizieren oder verschieben; bestehende oder neue Zielzettel.
+- Kopien ohne Zuwachsmenge; QS, Fotos und Feldaufmaß optional.
+- Linksbündige Auswahlbäume und größere Fotovorschau.
+- Veraltete Aktion „Offene übernehmen“ entfernt.
+
 ## 0.39.14 – Hierarchische Leistungsauswahl
 
 - Separate Mehrfachauswahl für Bauwerke und Bauteile mit aufklappbaren Bauwerken.
