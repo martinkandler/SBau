@@ -1,3 +1,7 @@
+## 0.39.11 – Leistungserfassung
+
+- Vollständige paginierte HLV-/NT-Auswahl, Mengeneinheit aus LV, mehrere Pläne, Fotos im Feldaufmaß, sichtbare Speicherfehler.
+
 ## 0.39.10 – Firmenlogo als Favicon
 
 - Originales Firmenlogo ohne Schriftzug als SVG-Browser-Icon; GitHub-Pages-kompatibler Pfad.
