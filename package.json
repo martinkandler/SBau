@@ -1,7 +1,7 @@
 {
   "name": "sbau-akte",
   "private": true,
-  "version": "0.39.15",
+  "version": "0.39.16",
   "type": "module",
   "scripts": {
     "dev": "vite --host 0.0.0.0",
@@ -14,7 +14,8 @@
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "pdfjs-dist": "^4.10.38",
-    "xlsx": "^0.18.5"
+    "xlsx": "^0.18.5",
+    "pdf-lib": "^1.17.1"
   },
   "devDependencies": {
     "@types/react": "^18.3.18",

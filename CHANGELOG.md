@@ -1,3 +1,11 @@
+## 0.39.16 – Abrechnungs-PDF und Feldaufmaß
+
+- Getrennte Erläuterungen, Hinweise und Zuordnungen im PDF.
+- Positionsbezogene Anlagen: Feldaufmaße, ausgewählte Lieferscheine und Fotos.
+- Automatische Feldaufmaßnummern je Abrechnungszettel und LV-Übernahme.
+- Flächenfüllung und Deckkraft in Zeichenwerkzeugen.
+- Neue Abhängigkeit pdf-lib für Original-PDF-Seiten.
+
 ## 0.39.15 – Abrechnungsleistungen übertragen
 
 - Einzelne Leistungen duplizieren oder verschieben; bestehende oder neue Zielzettel.
