@@ -105,7 +105,7 @@ export function DialogHost(){
     toastListener=toast=>{
       if(toast.kind==='error'){setQueue(items=>[...items,{id:toast.id,message:toast.message,options:{confirmLabel:'OK',cancelLabel:'Schließen',danger:false},resolve:()=>{}}]);return}
       setToasts(items=>[...items.slice(-2),toast]);
-      window.setTimeout(()=>dismiss(toast.id),toast.kind==='error'?9000:4500);
+      window.setTimeout(()=>dismiss(toast.id),4500);
     };
     return()=>{confirmListener=null;toastListener=null};
   },[dismiss]);

@@ -1,4 +1,4 @@
-## 0.39.12 – LV-Baum und Leistungserfassung
+## 0.39.13 – LV-Baum und Leistungserfassung
 
 - Separater LV-Auswahldialog mit Titelhierarchie und Suche.
 - Mehrfachzuordnung von Bauwerken und Bauteilen, QS-Filter nach Zuordnung.

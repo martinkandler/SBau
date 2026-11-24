@@ -1,3 +1,7 @@
+## 0.39.13 – Build-Hotfix
+
+- Unzulässigen Typvergleich in der zentralen Popup-Komponente entfernt. Fehler bleiben als Dialog sichtbar.
+
 ## 0.39.12 – LV-Baum und Leistungserfassung
 
 - Separater LV-Auswahldialog mit Titelhierarchie und Suche.
