@@ -1,3 +1,11 @@
+## 0.39.10 – Firmenlogo als Favicon
+
+- Originales Firmenlogo ohne Schriftzug als SVG-Browser-Icon; GitHub-Pages-kompatibler Pfad.
+
+## 0.39.9 – Feldaufmaß-Zeicheneditor
+
+Freihand, Linie, Rechteck, Pfeil, Text, Farbe, Strichstärke, Undo/Redo; Skizzen werden mit der Leistung gespeichert und im PDF ausgegeben.
+
 ## 0.39.7 – Bauteil-Kategorien korrigiert
 
 - Tiefbau → Erdbau und Straßenbau → Hochbau ausschließlich im Bauteil-Kategoriensystem.
@@ -56,3 +64,8 @@
 - 0.14–0.34: Grundfunktionen und schrittweise Erweiterungen
 
 Details zu älteren Versionen befinden sich in den archivierten `RELEASE_*.md`-Dateien.
+
+## 0.39.8
+- Suchbare, paginierte Nachweisauswahl und direkte LV-Treffer.
+- Fotovorschau und Fotoimport aus der Leistungserfassung.
+- Feldaufmaß mit Blattnummer, Gewerk, Freitext und PDF-Export.

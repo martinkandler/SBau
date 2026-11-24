@@ -1,3 +1,11 @@
+## 0.39.10 – Firmenlogo als Favicon
+
+- Originales Firmenlogo ohne Schriftzug als SVG-Browser-Icon; GitHub-Pages-kompatibler Pfad.
+
+## 0.39.9 – Feldaufmaß-Zeicheneditor
+
+Freihand, Linie, Rechteck, Pfeil, Text, Farbe, Strichstärke, Undo/Redo; Skizzen werden mit der Leistung gespeichert und im PDF ausgegeben.
+
 # sbau.akte 0.39.6
 
 Offlinefähige digitale Baustellenakte. Dokumentenimport mit Bauteilzuordnung, QS-Ablagekategorie und unabhängiger Dokumentenart.
@@ -34,3 +42,6 @@ Für GitHub Pages den Workflow `.github/workflows/deploy.yml` verwenden. Die ver
 
 ## Versionspflege
 Bei jeder Veröffentlichung `src/appVersion.ts`, `package.json`, `CHANGELOG.md` und die Funktionsübersicht in `src/ProgramInfo.tsx` prüfen und gemeinsam aktualisieren. Historische Release-Dateien bleiben als Archiv erhalten.
+
+### 0.39.8
+Leistungserfassung mit Suchfiltern, Fotovorschau und Feldaufmaß-PDF (Freitext, keine digitale Skizze).
