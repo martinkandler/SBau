@@ -1,5 +1,5 @@
-## 0.39.27 – Kompakter Feldaufmaßkopf
+## 0.39.28 – Fotodetails und Dialoge
 
-- Dynamische Kopfhöhe abhängig von Bauvorhaben und Gewerken; Seitenzahl neben dem Datum.
-- Gewonnener Platz steht dem Aufmaßinhalt zur Verfügung; A4 und Unterschriften unverändert.
+- Fotodetails direkt nach Aufnahme oder Auswahl; freiwillige Zuordnung und gefilterte Bauteile.
+- Einheitliche Schließen-Schaltflächen; Feldaufmaß ohne Seitenangabe und Gewerke-Eingabefeld.
 

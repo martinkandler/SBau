@@ -1,3 +1,8 @@
+## 0.39.28 – Fotodetails und Dialoge
+
+- Fotodetails direkt nach Aufnahme oder Auswahl; freiwillige Zuordnung und gefilterte Bauteile.
+- Einheitliche Schließen-Schaltflächen; Feldaufmaß ohne Seitenangabe und Gewerke-Eingabefeld.
+
 ## 0.39.27 – Kompakter Feldaufmaßkopf
 
 - Dynamische Kopfhöhe abhängig von Bauvorhaben und Gewerken; Seitenzahl neben dem Datum.
