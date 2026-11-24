@@ -1,3 +1,8 @@
+## 0.39.25 – Feldaufmaßkopf und Paketbereinigung
+
+- Bauvorhaben, Feldaufmaßnummer und Gewerk neben dem Logo im Kopf; Leistungszuordnung und Ausgeführte Leistungen – Maße und Berechnung.
+- Eine aktuelle RELEASE.md; bisherige Release-Notizen im CHANGELOG archiviert. Nicht verwendete Excel-Vorlage entfernt.
+
 ## 0.39.24 – Reihenfolge Feldaufmaß
 
 - Ausgeführte Leistungen / Maße vor der Aufmaßskizze; Abschnittsnummern angepasst. Einseitiges Layout und alle Exportwege unverändert.
