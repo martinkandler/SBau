@@ -1,6 +1,9 @@
-## 0.39.29 – Erweiterte Einführungstour
+# 0.40.2 – Musterprojekt EÜ Lindenstraße
 
-- 38 Schritte in fünf direkt anwählbaren Kapiteln; aktualisierte Hinweise zu Planmarkierungen, Fotodetails, QS, LV und Abrechnung.
-- Fiktiver Muster-Abrechnungszettel mit zugeordneten Dateien und Feldaufmaß; Demo-Reset berücksichtigt Abrechnungsdaten.
-- Übungen für PDF- und ZIP-Export; globale Einstellungen nur ansehen.
+- 12 technische PDF-Musterpläne in vier Planebenen, plus ein archivierter Vorabzug.
+- Sechs fotorealistische, KI-generierte Baustellenfotos mit Datum, Ort und Bauteilzuordnung.
+- Frischbetonprüfung, Lieferschein und Feldaufmaß als fiktive PDF-Musterunterlagen.
+- Fundament F01 mit 84,00 m³ und verknüpften Plänen, Fotos und Nachweisen im Abrechnungszettel.
+- Das Musterprojekt wird unter der eigenen Projektkennung DEMO-0402 angelegt. Frühere Demo-Projekte bleiben verfügbar.
 
+Zum Öffnen auf der Startseite **Musterprojekt frei erkunden** oder **Einführungstour starten** wählen.

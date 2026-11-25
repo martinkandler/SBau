@@ -1,3 +1,19 @@
+# 0.40.2 – Musterprojekt EÜ Lindenstraße
+
+- 12 technische PDF-Musterpläne in vier Planebenen, plus ein archivierter Vorabzug.
+- Sechs fotorealistische, KI-generierte Baustellenfotos mit Datum, Ort und Bauteilzuordnung.
+- Frischbetonprüfung, Lieferschein und Feldaufmaß als fiktive PDF-Musterunterlagen.
+- Fundament F01 mit 84,00 m³ und verknüpften Plänen, Fotos und Nachweisen im Abrechnungszettel.
+- Das Musterprojekt wird unter der eigenen Projektkennung DEMO-0402 angelegt. Frühere Demo-Projekte bleiben verfügbar.
+
+## 0.40.1 – Muster-LV und Abrechnung
+
+Erweitertes Muster-LV, acht Feldaufmaße, separate Demo-Projektkennung. Schematische Bild- und Planunterlagen bleiben vorerst erhalten.
+
+## 0.40.0 – Präsentationsprojekt und Spotlight
+
+Neues separates Musterprojekt mit fachlich strukturiertem LV, sieben Leistungsmeldungen mit Feldaufmaßen, Spotlight und kompaktem Tourmodus. Bestehende Demo bleibt erhalten. Pläne und Fotos sind weiterhin schematische Muster.
+
 ## 0.39.29 – Erweiterte Einführungstour
 
 - 38 Schritte in fünf direkt anwählbaren Kapiteln; aktualisierte Hinweise zu Planmarkierungen, Fotodetails, QS, LV und Abrechnung.
@@ -111,7 +127,7 @@ Offlinefähige digitale Baustellenakte. Dokumentenimport mit Bauteilzuordnung, Q
 
 # sbau.akte – Digitale Baustellendokumentation
 
-**Aktuelle Version: 0.39.4 (Entwicklungsstand)** · React, TypeScript, Vite, Dexie/IndexedDB · offlinefähige PWA
+**Aktuelle Version: 0.40.2 (Entwicklungsstand)** · React, TypeScript, Vite, Dexie/IndexedDB
 
 ## Funktionsumfang
 - Projekt-Dashboard, Projektverwaltung und JSON-Sicherung
@@ -137,7 +153,7 @@ Für GitHub Pages den Workflow `.github/workflows/deploy.yml` verwenden. Die ver
 
 **Wichtig zur LV-Summe:** Der Mengenparser interpretiert `1.000` als Menge `1`. Bereits zuvor falsch importierte Datensätze werden nicht stillschweigend umgerechnet. Die Vertragssumme berechnet sich aus der Summe von Vertragsmenge × Einheitspreis. Bei Abweichungen LV-Daten prüfen und korrigieren.
 
-**Buildstatus:** In der aktuellen Bearbeitungsumgebung war wegen nicht erreichbarer npm-Registry kein vollständiger Build möglich. GitHub Actions muss vor Freigabe erfolgreich laufen.
+**Build:** `npm run build` prüft TypeScript und erzeugt das Verzeichnis `dist`.
 
 ## Versionspflege
 Bei jeder Veröffentlichung `src/appVersion.ts`, `package.json`, `CHANGELOG.md` und die Funktionsübersicht in `src/ProgramInfo.tsx` prüfen und gemeinsam aktualisieren. Historische Release-Dateien bleiben als Archiv erhalten.

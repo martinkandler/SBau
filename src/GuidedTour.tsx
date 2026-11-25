@@ -6,7 +6,7 @@ export const TOUR_STEPS:TourStep[]=[
   {
     "chapter": "Start und Struktur",
     "title": "Willkommen",
-    "description": "Das Musterprojekt EÜ Lindenstraße – Neustadt ist fiktiv. Alle Übungen betreffen nur die Demo.",
+    "description": "Erkunde die fiktive EÜ Lindenstraße – Neustadt mit technischen PDF-Plänen und KI-generierten Baustellenfotos. Alle Übungen betreffen das Musterprojekt.",
     "area": "Dashboard",
     "selector": ".dash"
   },
@@ -30,7 +30,7 @@ export const TOUR_STEPS:TourStep[]=[
     "description": "Bauwerke bilden die übergeordnete Struktur.",
     "area": "Bauwerke",
     "selector": ".section",
-    "task": "Öffne ein Bauwerk und prüfe seine Daten."
+    "task": "Öffnen Sie ein Bauwerk und prüfe seine Daten."
   },
   {
     "chapter": "Start und Struktur",
@@ -38,7 +38,7 @@ export const TOUR_STEPS:TourStep[]=[
     "description": "Bauteile besitzen Bauwerkszuordnung, Kategorie und Kurzbezeichnung.",
     "area": "Bauteile",
     "selector": ".parts-layout",
-    "task": "Öffne ein Bauteil und prüfe seine Zuordnung."
+    "task": "Öffnen Sie ein Bauteil und prüfe seine Zuordnung."
   },
   {
     "chapter": "Start und Struktur",
@@ -46,7 +46,7 @@ export const TOUR_STEPS:TourStep[]=[
     "description": "Neue Bauteile können mit Kategorie und Bauwerk angelegt werden.",
     "area": "Bauteile",
     "selector": ".parts-heading .primary",
-    "task": "Öffne den Dialog und schließe ihn ohne Speichern."
+    "task": "Öffnen Sie den Dialog und schließe ihn ohne Speichern."
   },
   {
     "chapter": "Pläne und Zeichnungen",
@@ -96,7 +96,7 @@ export const TOUR_STEPS:TourStep[]=[
     "description": "Zeichnungen gruppieren, bearbeiten und exportieren. Freihand, Linien, Pfeile, Text, Rechtecke und Kreise stehen zur Verfügung.",
     "area": "Bestandsplanung",
     "selector": ".section",
-    "task": "Probiere Farbe, Füllung, Deckkraft und Rückgängig aus."
+    "task": "Testen Sie Farbe, Füllung, Deckkraft und Rückgängig aus."
   },
   {
     "chapter": "Fotos und Qualitätssicherung",
@@ -111,7 +111,7 @@ export const TOUR_STEPS:TourStep[]=[
     "description": "Bauwerk und Bauteil sind freiwillig. Nach Bauwerksauswahl werden nur passende Bauteile angeboten. Speichern übernimmt das Foto; Schließen verwirft ein neues ungespeichertes Foto.",
     "area": "Fotodokumentation",
     "selector": ".photo-grid",
-    "task": "Öffne ein vorhandenes Musterfoto und prüfe die Auswahl."
+    "task": "Öffnen Sie ein vorhandenes Musterfoto und prüfe die Auswahl."
   },
   {
     "chapter": "Fotos und Qualitätssicherung",
@@ -140,19 +140,19 @@ export const TOUR_STEPS:TourStep[]=[
     "description": "Ein Nachweis kann mehreren Bauteilen oder projektweit zugeordnet werden. Sammelbearbeitung und Filter erleichtern die Pflege.",
     "area": "Qualitätsnachweise",
     "selector": ".doc-grid",
-    "task": "Öffne einen Musternachweis und prüfe seine Zuordnung."
+    "task": "Öffnen Sie einen Musternachweis und prüfe seine Zuordnung."
   },
   {
     "chapter": "Fotos und Qualitätssicherung",
     "title": "Nachweisübersicht",
-    "description": "Prüfe vorhandene Nachweise und Dokumentationslücken je Bauteil.",
+    "description": "Prüfen Sie vorhandene Nachweise und Dokumentationslücken je Bauteil.",
     "area": "Nachweisübersicht",
     "selector": ".section"
   },
   {
     "chapter": "Leistungsverzeichnis und Abrechnung",
     "title": "LV importieren",
-    "description": "GAEB/RIBX81, XML, Excel und CSV können über die Importvorschau eingelesen werden. Prüfe Mengen, Einheiten und Preise vor der Bestätigung.",
+    "description": "GAEB/RIBX81, XML, Excel und CSV können über die Importvorschau eingelesen werden. Prüfen Sie Mengen, Einheiten und Preise vor der Bestätigung.",
     "area": "Leistungsverzeichnis",
     "selector": ".accounting-heading"
   },
@@ -169,7 +169,7 @@ export const TOUR_STEPS:TourStep[]=[
     "description": "Abrechnungszettel mit Zeitraum und Status anlegen, bearbeiten und auswählen.",
     "area": "Abrechnung",
     "selector": ".accounting-sheet-controls",
-    "task": "Wähle den vorbereiteten DEMO-Abrechnungszettel."
+    "task": "Wählen Sie den vorbereiteten DEMO-Abrechnungszettel."
   },
   {
     "chapter": "Leistungsverzeichnis und Abrechnung",
@@ -177,7 +177,7 @@ export const TOUR_STEPS:TourStep[]=[
     "description": "Leistung ergänzen öffnet die Eingabe. LV-Position über die hierarchische Auswahl bestimmen; Einheit stammt aus dem LV.",
     "area": "Abrechnung",
     "selector": ".accounting-actions",
-    "task": "Öffne Leistung ergänzen oder Bearbeiten bei einer Musterposition."
+    "task": "Öffnen Sie Leistung ergänzen oder Bearbeiten bei einer Musterposition."
   },
   {
     "chapter": "Leistungsverzeichnis und Abrechnung",
@@ -206,7 +206,7 @@ export const TOUR_STEPS:TourStep[]=[
     "description": "Feldaufmaß erstellen aktivieren, wenn ein separates Aufmaßblatt erforderlich ist. Die Gewerke werden automatisch aus den Bauteilkategorien ermittelt.",
     "area": "Abrechnung",
     "selector": ".accounting-sheet-panel",
-    "task": "Öffne die erste Musterleistung und prüfe das aktivierte Feldaufmaß."
+    "task": "Öffnen Sie die erste Musterleistung und prüfe das aktivierte Feldaufmaß."
   },
   {
     "chapter": "Leistungsverzeichnis und Abrechnung",
@@ -221,7 +221,7 @@ export const TOUR_STEPS:TourStep[]=[
     "description": "Einseitiges A4-Blatt mit Leistungszuordnung, Berechnung, Skizze, Gesamtmenge und festen Unterschriftsfeldern. Texte sind kopierbar; Fotos bleiben Rasterbilder.",
     "area": "Abrechnung",
     "selector": ".accounting-sheet-panel",
-    "task": "Exportiere das Feldaufmaß einer Musterleistung."
+    "task": "Exportieren Sie das Feldaufmaß einer Musterleistung."
   },
   {
     "chapter": "Leistungsverzeichnis und Abrechnung",
@@ -243,7 +243,7 @@ export const TOUR_STEPS:TourStep[]=[
     "description": "Der ZIP-Export enthält den reinen Abrechnungszettel, Originalpläne, QS-Dateien, Einzelbilder und einzelne Feldaufmaß-PDFs in Ordnern.",
     "area": "Abrechnung",
     "selector": ".accounting-actions",
-    "task": "Probiere PDF-Zuarbeit und ZIP-Export mit dem Musterzettel aus."
+    "task": "Testen Sie PDF-Zuarbeit und ZIP-Export mit dem Musterzettel aus."
   },
   {
     "chapter": "Dokumentation und Einstellungen",
@@ -277,16 +277,19 @@ export const TOUR_STEPS:TourStep[]=[
   {
     "chapter": "Dokumentation und Einstellungen",
     "title": "Einführung abgeschlossen",
-    "description": "Die Demo kann frei erkundet werden. Über die Kapitelauswahl kannst du einzelne Themen erneut aufrufen.",
+    "description": "Die Demo kann frei erkundet werden. Über die Kapitelauswahl können Sie einzelne Themen erneut aufrufen.",
     "area": "Dashboard",
     "selector": ".dash"
   }
 ];
-const STORAGE='sbau-tour-03929-step';
+const STORAGE='sbau-tour-0400-step';
 export default function GuidedTour({onArea,onExit}:{onArea:(area:string)=>void;onExit:()=>void}){
  const [step,setStep]=useState(()=>{const v=Number(localStorage.getItem(STORAGE)||'0');return Number.isInteger(v)&&v>=0&&v<TOUR_STEPS.length?v:0});
  const [position,setPosition]=useState<React.CSSProperties>({top:'20%',left:'50%',transform:'translateX(-50%)'});
- const current=TOUR_STEPS[step];
+ const [compact,setCompact]=useState(false);
+ const [focus,setFocus]=useState<{left:number;top:number;width:number;height:number}|null>(null);
+ const steps=compact?TOUR_STEPS.filter((_,i)=>[0,2,5,8,13,16,20,22,23,27,31,32,33,37].includes(i)):TOUR_STEPS;
+ const current=steps[step]||steps[0];
  useEffect(()=>{onArea(current.area);localStorage.setItem(STORAGE,String(step))},[step,current.area,onArea]);
  useEffect(()=>{
   const update=()=>{
@@ -295,9 +298,10 @@ export default function GuidedTour({onArea,onExit}:{onArea:(area:string)=>void;o
    const margin=16;
    const width=Math.min(370,window.innerWidth-2*margin);
    const height=Math.min(350,window.innerHeight-2*margin);
-   if(!target){setPosition({top:margin,left:Math.max(margin,window.innerWidth-width-margin),transform:'none'});return}
+   if(!target){setFocus(null);setPosition({top:margin,left:Math.max(margin,window.innerWidth-width-margin),transform:'none'});return}
    target.setAttribute('data-tour-focus','true');
    const r=target.getBoundingClientRect();
+   const leftEdge=Math.max(0,r.left-5),topEdge=Math.max(0,r.top-5);setFocus({left:leftEdge,top:topEdge,width:Math.max(0,Math.min(window.innerWidth,r.right+5)-leftEdge),height:Math.max(0,Math.min(window.innerHeight,r.bottom+5)-topEdge)});
    // Large workspace panels must never be used as a popup's vertical anchor.
    // In particular, the Planverwaltung step used to put the popup behind its panel.
    const preferredTop=r.height>window.innerHeight*.45?margin:(r.bottom+height+margin<window.innerHeight?r.bottom+12:r.top-height-12);
@@ -306,8 +310,8 @@ export default function GuidedTour({onArea,onExit}:{onArea:(area:string)=>void;o
    setPosition({top,left,transform:'none'});
   };
   const id=window.setTimeout(update,180);
-  window.addEventListener('resize',update);
-  return()=>{window.clearTimeout(id);window.removeEventListener('resize',update);document.querySelectorAll('[data-tour-focus]').forEach(el=>el.removeAttribute('data-tour-focus'))};
+  window.addEventListener('resize',update);window.addEventListener('scroll',update,true);const refresh=window.setInterval(update,700);
+  return()=>{window.clearTimeout(id);window.clearInterval(refresh);window.removeEventListener('scroll',update,true);window.removeEventListener('resize',update);document.querySelectorAll('[data-tour-focus]').forEach(el=>el.removeAttribute('data-tour-focus'))};
  },[step,current.selector,current.area]);
- return createPortal(<div className="tour-root" aria-live="polite"><div className="tour-shade"/><section className="tour-popover" role="dialog" aria-modal="false" aria-label="Interaktive Einführung" style={position}><div className="tour-top"><span><BookOpen size={17}/> Einführung · Schritt {step+1} von {TOUR_STEPS.length}</span><button className="modal-close-x" title="Tour beenden" aria-label="Tour beenden" onClick={onExit}><X size={17}/></button></div><label className="tour-chapter">Kapitel<select value={current.chapter} onChange={e=>setStep(TOUR_STEPS.findIndex(t=>t.chapter===e.target.value))}>{Array.from(new Set(TOUR_STEPS.map(t=>t.chapter))).map(c=><option key={c}>{c}</option>)}</select></label><div className="tour-progress"><span style={{width:`${(step+1)/TOUR_STEPS.length*100}%`}}/></div><h3>{current.title}</h3><p>{current.description}</p>{current.task&&<p className="tour-task">{current.task}</p>}<div className="tour-controls"><button disabled={step===0} onClick={()=>setStep(i=>i-1)}><ArrowLeft size={16}/> Zurück</button>{step===TOUR_STEPS.length-1?<button className="primary" onClick={()=>{localStorage.removeItem(STORAGE);onExit()}}><CheckCircle2 size={16}/> Abschließen</button>:<button className="primary" onClick={()=>setStep(i=>i+1)}>Weiter <ArrowRight size={16}/></button>}</div><small>Du kannst jederzeit die Tour schließen und später fortsetzen.</small></section></div>,document.body);
+ return createPortal(<div className="tour-root" aria-live="polite">{focus?<div className="tour-spotlight" style={focus}/>:<div className="tour-shade"/>}<section className="tour-popover" role="dialog" aria-modal="false" aria-label="Interaktive Einführung" style={position}><div className="tour-top"><span><BookOpen size={17}/> Einführung · Schritt {step+1} von {steps.length}</span><button className="modal-close-x" title="Tour beenden" aria-label="Tour beenden" onClick={onExit}><X size={17}/></button></div><label className="tour-chapter">Modus<select value={compact?'short':'full'} onChange={e=>{setStep(0);setCompact(e.target.value==='short')}}><option value="full">Einführungstour</option><option value="short">Programmvorstellung</option></select></label><label className="tour-chapter">Kapitel<select value={current.chapter} onChange={e=>setStep(steps.findIndex(t=>t.chapter===e.target.value))}>{Array.from(new Set(steps.map(t=>t.chapter))).map(c=><option key={c}>{c}</option>)}</select></label><div className="tour-progress"><span style={{width:`${(step+1)/steps.length*100}%`}}/></div><h3>{current.title}</h3><p>{current.description}</p>{current.task&&<p className="tour-task">{current.task}</p>}<div className="tour-controls"><button disabled={step===0} onClick={()=>setStep(i=>i-1)}><ArrowLeft size={16}/> Zurück</button>{step===steps.length-1?<button className="primary" onClick={()=>{localStorage.removeItem(STORAGE);onExit()}}><CheckCircle2 size={16}/> Abschließen</button>:<button className="primary" onClick={()=>setStep(i=>i+1)}>Weiter <ArrowRight size={16}/></button>}</div><small>Sie können die Tour jederzeit schließen.</small></section></div>,document.body);
 }

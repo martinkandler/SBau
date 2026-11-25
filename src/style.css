@@ -418,3 +418,5 @@ button:focus-visible,select:focus-visible,input:focus-visible,textarea:focus-vis
 .modal-close-x,.modal-head button:has(svg.lucide-x),.doc-dialog button:has(svg.lucide-x),.photo-editor button:has(svg.lucide-x){background:transparent!important;color:inherit!important;width:36px;height:36px;border-radius:8px;flex-shrink:0}.modal-close-x:hover{background:var(--line,#e5eaf0)!important}.modal-close-x svg{width:24px;height:24px}
 
 .tour-chapter{display:flex;flex-direction:column;gap:4px;margin-top:10px;font-size:12px;font-weight:600}.tour-chapter select{width:100%;min-width:0;padding:6px;border:1px solid #b8c8d6;border-radius:6px;background:#f4f7fa;color:#1d354b}.tour-popover .modal-close-x{color:#b42318}
+
+.tour-spotlight{position:fixed;z-index:0;pointer-events:none;border:2px solid #60a5fa;border-radius:8px;box-shadow:0 0 0 200vmax #0b1c2d80;box-sizing:border-box}.tour-popover{box-sizing:border-box}[data-tour-focus=true]{position:revert;outline:none!important;box-shadow:none!important}
