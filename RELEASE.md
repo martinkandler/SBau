@@ -1,5 +1,6 @@
-## 0.39.28 – Fotodetails und Dialoge
+## 0.39.29 – Erweiterte Einführungstour
 
-- Fotodetails direkt nach Aufnahme oder Auswahl; freiwillige Zuordnung und gefilterte Bauteile.
-- Einheitliche Schließen-Schaltflächen; Feldaufmaß ohne Seitenangabe und Gewerke-Eingabefeld.
+- 38 Schritte in fünf direkt anwählbaren Kapiteln; aktualisierte Hinweise zu Planmarkierungen, Fotodetails, QS, LV und Abrechnung.
+- Fiktiver Muster-Abrechnungszettel mit zugeordneten Dateien und Feldaufmaß; Demo-Reset berücksichtigt Abrechnungsdaten.
+- Übungen für PDF- und ZIP-Export; globale Einstellungen nur ansehen.
 

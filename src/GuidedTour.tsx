@@ -1,30 +1,288 @@
 import React,{useEffect,useState} from 'react';
 import {createPortal} from 'react-dom';
 import {ArrowLeft,ArrowRight,BookOpen,CheckCircle2,X} from 'lucide-react';
-export type TourStep={title:string;description:string;area:string;selector?:string;task?:string};
+export type TourStep={chapter:string;title:string;description:string;area:string;selector?:string;task?:string};
 export const TOUR_STEPS:TourStep[]=[
- {title:'Willkommen in sbau.akte',description:'Dieses Projekt ist vollständig fiktiv. Du kannst alle Funktionen gefahrlos ausprobieren. Deine echten Projekte bleiben unverändert.',area:'Dashboard',selector:'.topbar'},
-  {title:'Projekt-Dashboard',description:'Beim Öffnen eines Projekts landest du hier: Dokumentationsstand, offene Punkte, Abrechnung und die zuletzt hinzugefügten Fotos und Dokumente. Mit den Kacheln und Listeneinträgen springst du direkt in den passenden Bereich.',area:'Dashboard',selector:'.dash'},
- {title:'Projektnavigation',description:'Über die obere Leiste wechselst du zwischen Projekten und Arbeitsbereichen. „Bereiche“ ist nach Planen, Dokumentieren und Abrechnen gegliedert und zeigt, wo du gerade bist. Der Zurück-Button führt zum vorherigen Arbeitsbereich.',area:'Dashboard',selector:'header'},
- {title:'Bauwerke',description:'Vier fiktive Bauwerke bilden die Struktur dieser Eisenbahnüberführung. Öffne ein Bauwerk, um seine Stammdaten zu prüfen.',area:'Bauwerke',selector:'.section'},
- {title:'Bauteile',description:'18 Bauteile sind Bauwerken zugeordnet. Kurzbezeichnungen erscheinen auf Markierungen, vollständige Namen in der Liste.',area:'Bauteile',selector:'.parts-layout'},
- {title:'Bauteil hinzufügen',description:'Hier kannst du neue Bauteile erstellen. Weise jedem Bauteil ein Bauwerk und eine Kategorie zu.',area:'Bauteile',selector:'.parts-heading .primary',task:'Übung: Öffne „Bauteil hinzufügen“ und schließe den Dialog danach ohne Speichern.'},
- {title:'Planverwaltung',description:'Die vier Planebenen sind Übersichts-, Bauwerks-, Bauteil- und Detailpläne. Prüfe Plantyp, Status und Revisionsstand.',area:'Planverwaltung',selector:'.section'},
- {title:'Planrevisionen',description:'Eine neue Revision ersetzt die aktuelle Planfassung, während die ältere Revision für die Nachvollziehbarkeit erhalten bleibt.',area:'Planverwaltung',selector:'.section'},
- {title:'Planviewer',description:'Hier lassen sich Pläne öffnen, verschieben und zoomen. Das Muster enthält schematische Zeichnungen auf allen vier Ebenen.',area:'Übersichtspläne',selector:'.workspace'},
- {title:'Bauwerksfläche',description:'Mit „Markierung hinzufügen“ wählst du ein Bauwerk und die Markierungsart Fläche. Einzelklicks setzen Eckpunkte; Doppelklick schließt die Fläche.',area:'Übersichtspläne',selector:'.workspace',task:'Übung: Wähle eine bestehende Bauwerksfläche und prüfe ihre Farbe.'},
- {title:'Bauteil-Pins',description:'Pins sind mit Kurzbezeichnungen versehen. Du kannst sie verschieben, bearbeiten oder vom Plan entfernen, ohne das Bauteil zu löschen.',area:'Übersichtspläne',selector:'.workspace'},
- {title:'Fotodokumentation',description:'Die Demo enthält 24 schematische Bildillustrationen mit Aufnahmedatum, Bauwerks- und Bauteilzuordnung. Erzeuge einen Fotobericht.',area:'Fotodokumentation',selector:'.workspace'},
- {title:'Qualitätsnachweise',description:'12 fiktive Unterlagen zeigen die Zuordnung von Prüfberichten, Lieferscheinen und Protokollen. Sie sind keine gültigen Nachweise.',area:'Qualitätsnachweise',selector:'.workspace'},
- {title:'Nachweisübersicht',description:'Hier erkennst du, welche Unterlagen je Bauteil vorhanden sind und wo Dokumentationslücken bestehen.',area:'Nachweisübersicht',selector:'.workspace'},
- {title:'Bestandsplanung',description:'Bestandsänderungen lassen sich grafisch auf dem Plan dokumentieren, gruppieren und später exportieren.',area:'Bestandsplanung',selector:'.workspace'},
- {title:'Leistungsverzeichnis',description:'Das Muster-LV enthält 30 Positionen mit fiktiven Mengen und Preisen. In eigenen Projekten kannst du Excel- oder CSV-Dateien importieren.',area:'Abrechnung',selector:'.workspace'},
- {title:'Aufmaß und Abschlagsrechnung',description:'20 Musteraufmaße und zwei kumulative Abschlagsstände zeigen den Abrechnungsablauf. Alle Beträge sind erfunden.',area:'Abrechnung',selector:'.workspace'},
- {title:'Gesamtdokumentation',description:'Erzeuge eine Bauteil-, Bauwerks- oder Projektdokumentation mit Deckblatt, Inhaltsverzeichnis, Fotos und Nachweisen.',area:'Gesamtdokumentation',selector:'.workspace'},
- {title:'Einstellungen und Datensicherung',description:'In Einstellungen verwaltest du Kategorien, Dokumentenarten und Darstellung. Erstelle regelmäßig eine externe Projektsicherung.',area:'Einstellungen',selector:'.workspace'},
- {title:'Einführung abgeschlossen',description:'Du kannst die Demo jetzt frei erkunden, die Tour erneut starten oder zur normalen Projektübersicht zurückkehren.',area:'Übersichtspläne',selector:'.workspace'}
+  {
+    "chapter": "Start und Struktur",
+    "title": "Willkommen",
+    "description": "Das Musterprojekt EÜ Lindenstraße – Neustadt ist fiktiv. Alle Übungen betreffen nur die Demo.",
+    "area": "Dashboard",
+    "selector": ".dash"
+  },
+  {
+    "chapter": "Start und Struktur",
+    "title": "Projekt-Dashboard",
+    "description": "Kacheln und Listen führen zu Dokumentationsstand, offenen Punkten, Fotos und Abrechnung.",
+    "area": "Dashboard",
+    "selector": ".dash"
+  },
+  {
+    "chapter": "Start und Struktur",
+    "title": "Navigation",
+    "description": "Über Projekte und Bereiche wechselst du die Ansicht; Zurück führt zum vorherigen Bereich.",
+    "area": "Dashboard",
+    "selector": "header"
+  },
+  {
+    "chapter": "Start und Struktur",
+    "title": "Bauwerke",
+    "description": "Bauwerke bilden die übergeordnete Struktur.",
+    "area": "Bauwerke",
+    "selector": ".section",
+    "task": "Öffne ein Bauwerk und prüfe seine Daten."
+  },
+  {
+    "chapter": "Start und Struktur",
+    "title": "Bauteile",
+    "description": "Bauteile besitzen Bauwerkszuordnung, Kategorie und Kurzbezeichnung.",
+    "area": "Bauteile",
+    "selector": ".parts-layout",
+    "task": "Öffne ein Bauteil und prüfe seine Zuordnung."
+  },
+  {
+    "chapter": "Start und Struktur",
+    "title": "Bauteil hinzufügen",
+    "description": "Neue Bauteile können mit Kategorie und Bauwerk angelegt werden.",
+    "area": "Bauteile",
+    "selector": ".parts-heading .primary",
+    "task": "Öffne den Dialog und schließe ihn ohne Speichern."
+  },
+  {
+    "chapter": "Pläne und Zeichnungen",
+    "title": "Planverwaltung",
+    "description": "Übersichts-, Bauwerks-, Bauteil- und Detailpläne verwalten; Kategorie, Status und Revision prüfen.",
+    "area": "Planverwaltung",
+    "selector": ".section"
+  },
+  {
+    "chapter": "Pläne und Zeichnungen",
+    "title": "Planrevisionen",
+    "description": "Eine neue Revision ersetzt die aktuelle Fassung; ältere Revisionen bleiben nachvollziehbar.",
+    "area": "Planverwaltung",
+    "selector": ".section"
+  },
+  {
+    "chapter": "Pläne und Zeichnungen",
+    "title": "Planviewer",
+    "description": "Pläne öffnen, verschieben, zoomen und einpassen.",
+    "area": "Übersichtspläne",
+    "selector": ".workspace"
+  },
+  {
+    "chapter": "Pläne und Zeichnungen",
+    "title": "Markierungen",
+    "description": "Mit Markierung hinzufügen zwischen Bauwerk oder Bauteil sowie Pin oder Fläche wählen. Doppelklick schließt ein Polygon.",
+    "area": "Übersichtspläne",
+    "selector": ".workspace"
+  },
+  {
+    "chapter": "Pläne und Zeichnungen",
+    "title": "Flächen und Pins bearbeiten",
+    "description": "Flächenpunkte, Farbe und Pins bearbeiten; Markierung entfernen, ohne das Bauteil zu löschen.",
+    "area": "Übersichtspläne",
+    "selector": ".workspace"
+  },
+  {
+    "chapter": "Pläne und Zeichnungen",
+    "title": "Sichtbarkeit und Transparenz",
+    "description": "Pins und Flächen getrennt anzeigen oder ausblenden; Transparenz und Kategorienfilter einstellen.",
+    "area": "Übersichtspläne",
+    "selector": ".workspace"
+  },
+  {
+    "chapter": "Pläne und Zeichnungen",
+    "title": "Bestandsplanung",
+    "description": "Zeichnungen gruppieren, bearbeiten und exportieren. Freihand, Linien, Pfeile, Text, Rechtecke und Kreise stehen zur Verfügung.",
+    "area": "Bestandsplanung",
+    "selector": ".section",
+    "task": "Probiere Farbe, Füllung, Deckkraft und Rückgängig aus."
+  },
+  {
+    "chapter": "Fotos und Qualitätssicherung",
+    "title": "Fotos hinzufügen",
+    "description": "Kamera oder Fotos hinzufügen öffnet nach der Auswahl automatisch die Fotodetails. Mehrere Bilder werden nacheinander bearbeitet.",
+    "area": "Fotodokumentation",
+    "selector": ".photo-head"
+  },
+  {
+    "chapter": "Fotos und Qualitätssicherung",
+    "title": "Fotodetails",
+    "description": "Bauwerk und Bauteil sind freiwillig. Nach Bauwerksauswahl werden nur passende Bauteile angeboten. Speichern übernimmt das Foto; Schließen verwirft ein neues ungespeichertes Foto.",
+    "area": "Fotodokumentation",
+    "selector": ".photo-grid",
+    "task": "Öffne ein vorhandenes Musterfoto und prüfe die Auswahl."
+  },
+  {
+    "chapter": "Fotos und Qualitätssicherung",
+    "title": "Fotos annotieren",
+    "description": "Das Original bleibt erhalten. Zeichne Pfeile, Kreise, Rechtecke oder Texte; Füllung, Deckkraft und Strichstärke sind einstellbar.",
+    "area": "Fotodokumentation",
+    "selector": ".photo-grid"
+  },
+  {
+    "chapter": "Fotos und Qualitätssicherung",
+    "title": "Fotofilter und Fotobericht",
+    "description": "Filtere nach Kategorie, Datum und Annotation. Mehrfachauswahl erlaubt Sammelzuordnung und PDF-Fotobericht.",
+    "area": "Fotodokumentation",
+    "selector": ".photo-filters"
+  },
+  {
+    "chapter": "Fotos und Qualitätssicherung",
+    "title": "Qualitätsnachweise importieren",
+    "description": "Beim Import QS-Ablagekategorie und Dokumentart unabhängig wählen. Originaldateien bleiben erhalten.",
+    "area": "Qualitätsnachweise",
+    "selector": ".doc-upload"
+  },
+  {
+    "chapter": "Fotos und Qualitätssicherung",
+    "title": "Mehrfachzuordnung",
+    "description": "Ein Nachweis kann mehreren Bauteilen oder projektweit zugeordnet werden. Sammelbearbeitung und Filter erleichtern die Pflege.",
+    "area": "Qualitätsnachweise",
+    "selector": ".doc-grid",
+    "task": "Öffne einen Musternachweis und prüfe seine Zuordnung."
+  },
+  {
+    "chapter": "Fotos und Qualitätssicherung",
+    "title": "Nachweisübersicht",
+    "description": "Prüfe vorhandene Nachweise und Dokumentationslücken je Bauteil.",
+    "area": "Nachweisübersicht",
+    "selector": ".section"
+  },
+  {
+    "chapter": "Leistungsverzeichnis und Abrechnung",
+    "title": "LV importieren",
+    "description": "GAEB/RIBX81, XML, Excel und CSV können über die Importvorschau eingelesen werden. Prüfe Mengen, Einheiten und Preise vor der Bestätigung.",
+    "area": "Leistungsverzeichnis",
+    "selector": ".accounting-heading"
+  },
+  {
+    "chapter": "Leistungsverzeichnis und Abrechnung",
+    "title": "Hauptvertrag und Nachträge",
+    "description": "HLV und Nachträge getrennt betrachten; nach OZ, Kurz- oder Langtext suchen.",
+    "area": "Leistungsverzeichnis",
+    "selector": ".accounting-v038"
+  },
+  {
+    "chapter": "Leistungsverzeichnis und Abrechnung",
+    "title": "Abrechnungszettel",
+    "description": "Abrechnungszettel mit Zeitraum und Status anlegen, bearbeiten und auswählen.",
+    "area": "Abrechnung",
+    "selector": ".accounting-sheet-controls",
+    "task": "Wähle den vorbereiteten DEMO-Abrechnungszettel."
+  },
+  {
+    "chapter": "Leistungsverzeichnis und Abrechnung",
+    "title": "Leistung melden",
+    "description": "Leistung ergänzen öffnet die Eingabe. LV-Position über die hierarchische Auswahl bestimmen; Einheit stammt aus dem LV.",
+    "area": "Abrechnung",
+    "selector": ".accounting-actions",
+    "task": "Öffne Leistung ergänzen oder Bearbeiten bei einer Musterposition."
+  },
+  {
+    "chapter": "Leistungsverzeichnis und Abrechnung",
+    "title": "Bauwerke, Bauteile und Pläne",
+    "description": "Mehrere Bauwerke, Bauteile und Pläne über die strukturierten Auswahldialoge zuordnen.",
+    "area": "Abrechnung",
+    "selector": ".accounting-sheet-panel"
+  },
+  {
+    "chapter": "Leistungsverzeichnis und Abrechnung",
+    "title": "Mengen und Nachweise",
+    "description": "Zuwachsmenge, Grundlage, Erläuterung und Hinweise erfassen. QS-Unterlagen und Fotos passend zur Bauteilauswahl zuordnen.",
+    "area": "Abrechnung",
+    "selector": ".accounting-sheet-panel"
+  },
+  {
+    "chapter": "Leistungsverzeichnis und Abrechnung",
+    "title": "Fotos zur Leistung",
+    "description": "Fotos auswählen oder direkt hinzufügen. Neu hinzugefügte Fotos werden auch in der Fotodokumentation gespeichert.",
+    "area": "Abrechnung",
+    "selector": ".accounting-sheet-panel"
+  },
+  {
+    "chapter": "Leistungsverzeichnis und Abrechnung",
+    "title": "Optionales Feldaufmaß",
+    "description": "Feldaufmaß erstellen aktivieren, wenn ein separates Aufmaßblatt erforderlich ist. Die Gewerke werden automatisch aus den Bauteilkategorien ermittelt.",
+    "area": "Abrechnung",
+    "selector": ".accounting-sheet-panel",
+    "task": "Öffne die erste Musterleistung und prüfe das aktivierte Feldaufmaß."
+  },
+  {
+    "chapter": "Leistungsverzeichnis und Abrechnung",
+    "title": "Aufmaßskizze",
+    "description": "Maße und Berechnung erfassen; Skizze mit Stift, Linie, Kreis, Rechteck, Pfeil oder Text erstellen. Fotos können eingefügt werden.",
+    "area": "Abrechnung",
+    "selector": ".accounting-sheet-panel"
+  },
+  {
+    "chapter": "Leistungsverzeichnis und Abrechnung",
+    "title": "Feldaufmaß als PDF",
+    "description": "Einseitiges A4-Blatt mit Leistungszuordnung, Berechnung, Skizze, Gesamtmenge und festen Unterschriftsfeldern. Texte sind kopierbar; Fotos bleiben Rasterbilder.",
+    "area": "Abrechnung",
+    "selector": ".accounting-sheet-panel",
+    "task": "Exportiere das Feldaufmaß einer Musterleistung."
+  },
+  {
+    "chapter": "Leistungsverzeichnis und Abrechnung",
+    "title": "Leistungen duplizieren oder verschieben",
+    "description": "Eine Leistung in einen vorhandenen oder neuen Zettel übertragen. Nachweise, Fotos und Feldaufmaß optional mitnehmen; beim Duplizieren neue Menge erfassen.",
+    "area": "Abrechnung",
+    "selector": ".billing-table"
+  },
+  {
+    "chapter": "Leistungsverzeichnis und Abrechnung",
+    "title": "PDF-Zuarbeit",
+    "description": "Der Gesamtexport enthält den Abrechnungszettel und vorgesehene Anlagen mit Seitenverzeichnis, ohne einzelne Anlagendeckblätter.",
+    "area": "Abrechnung",
+    "selector": ".accounting-actions"
+  },
+  {
+    "chapter": "Leistungsverzeichnis und Abrechnung",
+    "title": "ZIP-Export",
+    "description": "Der ZIP-Export enthält den reinen Abrechnungszettel, Originalpläne, QS-Dateien, Einzelbilder und einzelne Feldaufmaß-PDFs in Ordnern.",
+    "area": "Abrechnung",
+    "selector": ".accounting-actions",
+    "task": "Probiere PDF-Zuarbeit und ZIP-Export mit dem Musterzettel aus."
+  },
+  {
+    "chapter": "Dokumentation und Einstellungen",
+    "title": "Gesamtdokumentation",
+    "description": "Bauteil-, Bauwerks- oder Projektdokumentation mit Fotos und Nachweisen zusammenstellen.",
+    "area": "Gesamtdokumentation",
+    "selector": ".section"
+  },
+  {
+    "chapter": "Dokumentation und Einstellungen",
+    "title": "Kategorienverwaltung",
+    "description": "Bauteil-, Plan- und QS-Kategorien sind getrennte Systeme. Globale Standards und projektspezifische Ergänzungen verwalten.",
+    "area": "Einstellungen",
+    "selector": ".section",
+    "task": "Globale Änderungen können auch echte Projekte betreffen: hier nur ansehen."
+  },
+  {
+    "chapter": "Dokumentation und Einstellungen",
+    "title": "Dokumentarten",
+    "description": "Dokumentarten getrennt von QS-Ablagekategorien verwalten.",
+    "area": "Einstellungen",
+    "selector": ".section"
+  },
+  {
+    "chapter": "Dokumentation und Einstellungen",
+    "title": "Datensicherung",
+    "description": "Projekt als JSON sichern und bei Bedarf importieren. Lokale Browserdaten regelmäßig extern sichern.",
+    "area": "Einstellungen",
+    "selector": ".section"
+  },
+  {
+    "chapter": "Dokumentation und Einstellungen",
+    "title": "Einführung abgeschlossen",
+    "description": "Die Demo kann frei erkundet werden. Über die Kapitelauswahl kannst du einzelne Themen erneut aufrufen.",
+    "area": "Dashboard",
+    "selector": ".dash"
+  }
 ];
-const STORAGE='sbau-tour-037-step';
+const STORAGE='sbau-tour-03929-step';
 export default function GuidedTour({onArea,onExit}:{onArea:(area:string)=>void;onExit:()=>void}){
  const [step,setStep]=useState(()=>{const v=Number(localStorage.getItem(STORAGE)||'0');return Number.isInteger(v)&&v>=0&&v<TOUR_STEPS.length?v:0});
  const [position,setPosition]=useState<React.CSSProperties>({top:'20%',left:'50%',transform:'translateX(-50%)'});
@@ -51,5 +309,5 @@ export default function GuidedTour({onArea,onExit}:{onArea:(area:string)=>void;o
   window.addEventListener('resize',update);
   return()=>{window.clearTimeout(id);window.removeEventListener('resize',update);document.querySelectorAll('[data-tour-focus]').forEach(el=>el.removeAttribute('data-tour-focus'))};
  },[step,current.selector,current.area]);
- return createPortal(<div className="tour-root" aria-live="polite"><div className="tour-shade"/><section className="tour-popover" role="dialog" aria-modal="false" aria-label="Interaktive Einführung" style={position}><div className="tour-top"><span><BookOpen size={17}/> Einführung · Schritt {step+1} von {TOUR_STEPS.length}</span><button title="Tour beenden" aria-label="Tour beenden" onClick={onExit}><X size={17}/></button></div><div className="tour-progress"><span style={{width:`${(step+1)/TOUR_STEPS.length*100}%`}}/></div><h3>{current.title}</h3><p>{current.description}</p>{current.task&&<p className="tour-task">{current.task}</p>}<div className="tour-controls"><button disabled={step===0} onClick={()=>setStep(i=>i-1)}><ArrowLeft size={16}/> Zurück</button>{step===TOUR_STEPS.length-1?<button className="primary" onClick={()=>{localStorage.removeItem(STORAGE);onExit()}}><CheckCircle2 size={16}/> Abschließen</button>:<button className="primary" onClick={()=>setStep(i=>i+1)}>Weiter <ArrowRight size={16}/></button>}</div><small>Du kannst jederzeit die Tour schließen und später fortsetzen.</small></section></div>,document.body);
+ return createPortal(<div className="tour-root" aria-live="polite"><div className="tour-shade"/><section className="tour-popover" role="dialog" aria-modal="false" aria-label="Interaktive Einführung" style={position}><div className="tour-top"><span><BookOpen size={17}/> Einführung · Schritt {step+1} von {TOUR_STEPS.length}</span><button className="modal-close-x" title="Tour beenden" aria-label="Tour beenden" onClick={onExit}><X size={17}/></button></div><label className="tour-chapter">Kapitel<select value={current.chapter} onChange={e=>setStep(TOUR_STEPS.findIndex(t=>t.chapter===e.target.value))}>{Array.from(new Set(TOUR_STEPS.map(t=>t.chapter))).map(c=><option key={c}>{c}</option>)}</select></label><div className="tour-progress"><span style={{width:`${(step+1)/TOUR_STEPS.length*100}%`}}/></div><h3>{current.title}</h3><p>{current.description}</p>{current.task&&<p className="tour-task">{current.task}</p>}<div className="tour-controls"><button disabled={step===0} onClick={()=>setStep(i=>i-1)}><ArrowLeft size={16}/> Zurück</button>{step===TOUR_STEPS.length-1?<button className="primary" onClick={()=>{localStorage.removeItem(STORAGE);onExit()}}><CheckCircle2 size={16}/> Abschließen</button>:<button className="primary" onClick={()=>setStep(i=>i+1)}>Weiter <ArrowRight size={16}/></button>}</div><small>Du kannst jederzeit die Tour schließen und später fortsetzen.</small></section></div>,document.body);
 }
